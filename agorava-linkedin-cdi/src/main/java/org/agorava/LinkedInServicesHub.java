@@ -14,7 +14,6 @@
  * limitations under the License.
  ******************************************************************************/
 
-
 package org.agorava;
 
 import java.lang.annotation.Annotation;
@@ -52,10 +51,7 @@ public class LinkedInServicesHub extends AbstractSocialNetworkServicesHub {
     @Inject
     Instance<LinkedInBaseService> services;
 
-    @Override
-    public void configureService(OAuthService service) {
-        super.configureService(service);
-
+    public void configureService(@Observes @LinkedIn OAuthService service) {
         service.setRequestHeader(REQUEST_HEADER);
     }
 
