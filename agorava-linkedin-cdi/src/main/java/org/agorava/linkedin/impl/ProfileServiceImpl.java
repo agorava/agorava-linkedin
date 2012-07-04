@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2012 Agorava
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,21 +14,16 @@
  * limitations under the License.
  ******************************************************************************/
 /**
- * 
+ *
  */
 package org.agorava.linkedin.impl;
 
 import org.agorava.LinkedInBaseService;
 import org.agorava.linkedin.ProfileService;
-import org.agorava.linkedin.model.LinkedInProfile;
-import org.agorava.linkedin.model.LinkedInProfileFull;
-import org.agorava.linkedin.model.LinkedInProfiles;
-import org.agorava.linkedin.model.ProfileField;
-import org.agorava.linkedin.model.SearchParameters;
+import org.agorava.linkedin.model.*;
 
 /**
  * @author Antoine Sabot-Durand
- * 
  */
 public class ProfileServiceImpl extends LinkedInBaseService implements ProfileService {
 
@@ -73,32 +68,32 @@ public class ProfileServiceImpl extends LinkedInBaseService implements ProfileSe
 
     @Override
     public LinkedInProfile getUserProfile() {
-        return getService().getForObject(PROFILE_URL, LinkedInProfile.class, "~");
+        return getService().get(PROFILE_URL, LinkedInProfile.class, "~");
     }
 
     @Override
     public LinkedInProfileFull getUserProfileFull() {
-        return getService().getForObject(PROFILE_URL_FULL, LinkedInProfileFull.class, "~");
+        return getService().get(PROFILE_URL_FULL, LinkedInProfileFull.class, "~");
     }
 
     @Override
     public LinkedInProfile getProfileById(String id) {
-        return getService().getForObject(PROFILE_URL, LinkedInProfile.class, id);
+        return getService().get(PROFILE_URL, LinkedInProfile.class, id);
     }
 
     @Override
     public LinkedInProfile getProfileByPublicUrl(String url) {
-        return getService().getForObject(PROFILE_URL, LinkedInProfile.class, url);
+        return getService().get(PROFILE_URL, LinkedInProfile.class, url);
     }
 
     @Override
     public LinkedInProfileFull getProfileFullById(String id) {
-        return getService().getForObject(PROFILE_URL_FULL, LinkedInProfileFull.class, id);
+        return getService().get(PROFILE_URL_FULL, LinkedInProfileFull.class, id);
     }
 
     @Override
     public LinkedInProfileFull getProfileFullByPublicUrl(String url) {
-        return getService().getForObject(PROFILE_URL_FULL, LinkedInProfileFull.class, url);
+        return getService().get(PROFILE_URL_FULL, LinkedInProfileFull.class, url);
     }
 
     @Override
