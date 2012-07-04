@@ -16,25 +16,26 @@
 
 package org.agorava;
 
-import java.lang.annotation.Annotation;
-import java.util.HashMap;
-import java.util.Map;
+import org.agorava.core.api.event.OAuthComplete;
+import org.agorava.core.api.event.SocialEvent.Status;
+import org.agorava.core.api.oauth.OAuthService;
+import org.agorava.core.cdi.AbstractSocialMediaApiHub;
+import org.agorava.linkedin.impl.ProfileServiceImpl;
+import org.jboss.solder.logging.Logger;
 
 import javax.enterprise.event.Observes;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
-
-import org.agorava.core.api.event.OAuthComplete;
-import org.agorava.core.api.event.SocialEvent.Status;
-import org.agorava.core.api.oauth.OAuthService;
-import org.agorava.core.cdi.AbstractSocialNetworkServicesHub;
-import org.agorava.linkedin.impl.ProfileServiceImpl;
-import org.jboss.solder.logging.Logger;
+import java.lang.annotation.Annotation;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author antoine
  */
-public class LinkedInServicesHub extends AbstractSocialNetworkServicesHub {
+public class LinkedInServicesHub extends AbstractSocialMediaApiHub {
+
+    private final static String MEDIA_NAME = "LinkedIn";
 
     private final static Map<String, String> REQUEST_HEADER = new HashMap<String, String>() {
         {
@@ -64,5 +65,10 @@ public class LinkedInServicesHub extends AbstractSocialNetworkServicesHub {
         if (oauthComplete.getStatus() == Status.SUCCESS)
             oauthComplete.getEventData().setUserProfile(services.select(ProfileServiceImpl.class).get().getUserProfile());
 
+    }
+
+    @Override
+    public String getSocialMediaName() {
+        return MEDIA_NAME;
     }
 }
