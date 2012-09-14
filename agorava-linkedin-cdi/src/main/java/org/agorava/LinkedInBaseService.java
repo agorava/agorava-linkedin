@@ -18,27 +18,31 @@
  */
 package org.agorava;
 
-import java.lang.annotation.Annotation;
+import org.agorava.core.api.oauth.OAuthService;
+import org.agorava.core.cdi.AbstractSocialMediaApi;
 
-import org.agorava.core.cdi.AbstractSocialNetworkService;
+import javax.inject.Inject;
 
 /**
  * @author Antoine Sabot-Durand
  */
-public abstract class LinkedInBaseService extends AbstractSocialNetworkService {
+public abstract class LinkedInBaseService extends AbstractSocialMediaApi {
 
     private static String API_ROOT = "https://api.linkedin.com/v1/";
 
-    protected static final String BASE_URL = "https://api.linkedin.com/v1/people/";
+    protected static final String BASE_URL = API_ROOT + "people/";
+
+    @Inject
+    @LinkedIn
+    private OAuthService service;
 
     @Override
-    public Annotation getQualifier() {
-        return LinkedInLiteral.INSTANCE;
+    public OAuthService getService() {
+        return service;
     }
 
     @Override
-    public String getApiRootUrl() {
-        return API_ROOT;
+    public String buildUri(String url) {
+        return API_ROOT + url;
     }
-
 }

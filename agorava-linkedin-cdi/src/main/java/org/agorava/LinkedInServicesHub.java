@@ -26,7 +26,6 @@ import org.jboss.solder.logging.Logger;
 import javax.enterprise.event.Observes;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
-import java.lang.annotation.Annotation;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,11 +52,6 @@ public class LinkedInServicesHub extends AbstractSocialMediaApiHub {
 
     public void configureService(@Observes @LinkedIn OAuthService service) {
         service.setRequestHeader(REQUEST_HEADER);
-    }
-
-    @Override
-    public Annotation getQualifier() {
-        return LinkedInLiteral.INSTANCE;
     }
 
     public void initMyProfile(@Observes @LinkedIn OAuthComplete oauthComplete) {
