@@ -48,4 +48,10 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <scm>
+        <connection>scm:git:git://github.com/agorava/agorava-linkedin.git</connection>
+        <developerConnection>scm:git:git@github.com:agorava/agorava-linkedin.git</developerConnection>
+        <url>http://github.com/agorava/agorava-linkedin</url>
+    </scm>
 </project>
