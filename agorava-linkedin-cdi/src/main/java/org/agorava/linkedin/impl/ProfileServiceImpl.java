@@ -34,7 +34,7 @@ public class ProfileServiceImpl extends LinkedInBaseService implements ProfileSe
 
     static {
         StringBuffer b = new StringBuffer();
-        b.append(BASE_URL).append("{id}:(");
+        b.append(BASE_URL).append("{0}:(");
         boolean first = true;
         for (ProfileField f : ProfileField.values()) {
             switch (f) {
