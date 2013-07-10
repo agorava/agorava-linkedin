@@ -16,8 +16,7 @@
 
 package org.agorava;
 
-import org.agorava.core.api.oauth.DefaultRootOAuth20;
-import org.agorava.core.api.oauth.OAuthConstants;
+import org.agorava.core.api.oauth.DefaultOAuth10Api;
 //import org.jboss.solder.logging.Logger;
 
 
@@ -26,7 +25,7 @@ import org.agorava.core.api.oauth.OAuthConstants;
  */
 
 @LinkedIn
-public class LinkedInRoot extends DefaultRootOAuth20 {
+public class LinkedInApi extends DefaultOAuth10Api {
 
     private final static String MEDIA_NAME = "LinkedIn";
 
@@ -35,8 +34,4 @@ public class LinkedInRoot extends DefaultRootOAuth20 {
         return MEDIA_NAME;
     }
 
-    @Override
-    public String getVerifierParamName() {
-        return OAuthConstants.VERIFIER;
-    }
 }
