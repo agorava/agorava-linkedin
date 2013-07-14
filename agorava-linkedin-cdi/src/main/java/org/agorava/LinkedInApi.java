@@ -13,36 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/**
- *
- */
+
 package org.agorava;
 
-import org.agorava.core.api.oauth.OAuthService;
-import org.agorava.core.oauth.AbstractApiService;
+import org.agorava.core.api.oauth.DefaultOAuth10Api;
+//import org.jboss.solder.logging.Logger;
 
-import javax.inject.Inject;
 
 /**
- * @author Antoine Sabot-Durand
+ * @author antoine
  */
-public abstract class LinkedInBaseService extends AbstractApiService {
 
-    private static String API_ROOT = "https://api.linkedin.com/v1/";
+@LinkedIn
+public class LinkedInApi extends DefaultOAuth10Api {
 
-    protected static final String BASE_URL = API_ROOT + "people/";
-
-    @Inject
-    @LinkedIn
-    private OAuthService service;
+    private final static String MEDIA_NAME = "LinkedIn";
 
     @Override
-    public OAuthService getService() {
-        return service;
+    public String getServiceName() {
+        return MEDIA_NAME;
     }
 
-    @Override
-    public String buildUri(String url) {
-        return API_ROOT + url;
-    }
 }

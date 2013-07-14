@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,14 @@
  */
 package org.agorava.linkedin.impl;
 
+import org.agorava.LinkedIn;
 import org.agorava.LinkedInBaseService;
+import org.agorava.core.api.event.OAuthComplete;
+import org.agorava.core.api.event.SocialEvent;
 import org.agorava.linkedin.ProfileService;
 import org.agorava.linkedin.model.*;
+
+import javax.enterprise.event.Observes;
 
 /**
  * @author Antoine Sabot-Durand
@@ -29,7 +34,7 @@ public class ProfileServiceImpl extends LinkedInBaseService implements ProfileSe
 
     static {
         StringBuffer b = new StringBuffer();
-        b.append(BASE_URL).append("{id}:(");
+        b.append(BASE_URL).append("{0}:(");
         boolean first = true;
         for (ProfileField f : ProfileField.values()) {
             switch (f) {
@@ -55,6 +60,13 @@ public class ProfileServiceImpl extends LinkedInBaseService implements ProfileSe
     static final String PROFILE_URL_FULL;
 
     static final String PEOPLE_SEARCH_URL = "https://api.linkedin.com/v1/people-search:(people:(id,first-name,last-name,headline,industry,site-standard-profile-request,public-profile-url,picture-url,summary,api-standard-profile-request))?{&keywords}{&first-name}{&last-name}{&company-name}{&current-company}{&title}{&current-title}{&school-name}{&current-school}{&country-code}{&postal-code}{&distance}{&start}{&count}{&sort}";
+
+
+    public void initMyProfile(@Observes @LinkedIn OAuthComplete oauthComplete) {
+        if (oauthComplete.getStatus() == SocialEvent.Status.SUCCESS)
+            oauthComplete.getEventData().setUserProfile(getUserProfile());
+
+    }
 
     @Override
     public String getProfileId() {

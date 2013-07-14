@@ -13,36 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/**
- *
- */
+
 package org.agorava;
 
-import org.agorava.core.api.oauth.OAuthService;
-import org.agorava.core.oauth.AbstractApiService;
+import org.agorava.core.cdi.OAuthServiceImpl;
 
-import javax.inject.Inject;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * @author Antoine Sabot-Durand
+ * Created with IntelliJ IDEA.
+ * User: antoine
+ * Date: 19/06/13
+ * Time: 18:41
+ * To change this template use File | Settings | File Templates.
  */
-public abstract class LinkedInBaseService extends AbstractApiService {
 
-    private static String API_ROOT = "https://api.linkedin.com/v1/";
+@LinkedIn
+public class LinkedInOauthService extends OAuthServiceImpl {
 
-    protected static final String BASE_URL = API_ROOT + "people/";
+    private final static Map<String, String> REQUEST_HEADER = new HashMap<String, String>() {
+        {
+            put("Content-Type", "application/json");
+            put("x-li-format", "json");
 
-    @Inject
-    @LinkedIn
-    private OAuthService service;
+        }
+    };
 
-    @Override
-    public OAuthService getService() {
-        return service;
-    }
 
-    @Override
-    public String buildUri(String url) {
-        return API_ROOT + url;
+    public LinkedInOauthService() {
+        super();
+        setRequestHeader(REQUEST_HEADER);
     }
 }
