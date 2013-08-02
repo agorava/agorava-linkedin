@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,7 @@
 
 package org.agorava.linkedin.jackson;
 
-import java.io.IOException;
-import java.util.Date;
-import java.util.List;
-
-import org.agorava.linkedin.model.Comment;
-import org.agorava.linkedin.model.LinkedInProfile;
-import org.agorava.linkedin.model.UpdateContent;
-import org.agorava.linkedin.model.UpdateContentCompany;
-import org.agorava.linkedin.model.UpdateContentShare;
-import org.agorava.linkedin.model.UpdateType;
+import org.agorava.linkedin.model.*;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.JsonProcessingException;
@@ -37,6 +28,10 @@ import org.codehaus.jackson.map.JsonDeserializer;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.type.TypeReference;
+
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author Antoine Sabot-Durand

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,23 +16,7 @@
 
 package org.agorava.linkedin.jackson;
 
-import java.io.IOException;
-import java.lang.reflect.Field;
-
-import org.agorava.linkedin.model.Company;
-import org.agorava.linkedin.model.LinkedInNetworkUpdate;
-import org.agorava.linkedin.model.UpdateAction;
-import org.agorava.linkedin.model.UpdateContent;
-import org.agorava.linkedin.model.UpdateContentCompany;
-import org.agorava.linkedin.model.UpdateContentConnection;
-import org.agorava.linkedin.model.UpdateContentFollow;
-import org.agorava.linkedin.model.UpdateContentGroup;
-import org.agorava.linkedin.model.UpdateContentPersonActivity;
-import org.agorava.linkedin.model.UpdateContentRecommendation;
-import org.agorava.linkedin.model.UpdateContentShare;
-import org.agorava.linkedin.model.UpdateContentStatus;
-import org.agorava.linkedin.model.UpdateContentViral;
-import org.agorava.linkedin.model.UpdateType;
+import org.agorava.linkedin.model.*;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.JsonProcessingException;
@@ -40,6 +24,9 @@ import org.codehaus.jackson.map.DeserializationContext;
 import org.codehaus.jackson.map.JsonDeserializer;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
+
+import java.io.IOException;
+import java.lang.reflect.Field;
 
 /**
  * @author Antoine Sabot-Durand

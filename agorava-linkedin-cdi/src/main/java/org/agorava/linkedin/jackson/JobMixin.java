@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,12 @@
 
 package org.agorava.linkedin.jackson;
 
-import java.util.Date;
-
-import org.agorava.linkedin.model.Company;
-import org.agorava.linkedin.model.JobPosition;
-import org.agorava.linkedin.model.LinkedInDate;
-import org.agorava.linkedin.model.LinkedInProfile;
-import org.agorava.linkedin.model.UrlResource;
+import org.agorava.linkedin.model.*;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
+
+import java.util.Date;
 
 /**
  * @author Antoine Sabot-Durand

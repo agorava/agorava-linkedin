@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,10 @@
 
 package org.agorava.linkedin.model;
 
+import org.agorava.linkedin.model.Post.PostCategory;
+
 import java.io.Serializable;
 import java.util.List;
-
-import org.agorava.linkedin.model.Post.PostCategory;
 
 /**
  * Model class representing a group on LinkedIn

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,60 +17,7 @@
 package org.agorava.linkedin.jackson;
 
 import org.agorava.LinkedIn;
-import org.agorava.linkedin.model.CodeAndName;
-import org.agorava.linkedin.model.Comment;
-import org.agorava.linkedin.model.Comments;
-import org.agorava.linkedin.model.Companies;
-import org.agorava.linkedin.model.Company;
-import org.agorava.linkedin.model.CompanyJobUpdate;
-import org.agorava.linkedin.model.ConnectionAuthorization;
-import org.agorava.linkedin.model.CurrentShare;
-import org.agorava.linkedin.model.Education;
-import org.agorava.linkedin.model.Group;
-import org.agorava.linkedin.model.GroupMemberships;
-import org.agorava.linkedin.model.GroupSettings;
-import org.agorava.linkedin.model.GroupSuggestions;
-import org.agorava.linkedin.model.ImAccount;
-import org.agorava.linkedin.model.Job;
-import org.agorava.linkedin.model.JobBookmark;
-import org.agorava.linkedin.model.JobBookmarks;
-import org.agorava.linkedin.model.JobPosition;
-import org.agorava.linkedin.model.Jobs;
-import org.agorava.linkedin.model.Likes;
-import org.agorava.linkedin.model.LinkedInConnections;
-import org.agorava.linkedin.model.LinkedInDate;
-import org.agorava.linkedin.model.LinkedInNetworkUpdate;
-import org.agorava.linkedin.model.LinkedInNetworkUpdates;
-import org.agorava.linkedin.model.LinkedInProfile;
-import org.agorava.linkedin.model.LinkedInProfileFull;
-import org.agorava.linkedin.model.LinkedInProfiles;
-import org.agorava.linkedin.model.Location;
-import org.agorava.linkedin.model.MemberGroup;
-import org.agorava.linkedin.model.NetworkStatistics;
-import org.agorava.linkedin.model.PersonActivity;
-import org.agorava.linkedin.model.PhoneNumber;
-import org.agorava.linkedin.model.Position;
-import org.agorava.linkedin.model.Post;
-import org.agorava.linkedin.model.PostComment;
-import org.agorava.linkedin.model.PostComments;
-import org.agorava.linkedin.model.Product;
-import org.agorava.linkedin.model.Products;
-import org.agorava.linkedin.model.Recommendation;
-import org.agorava.linkedin.model.Relation;
-import org.agorava.linkedin.model.Share;
-import org.agorava.linkedin.model.TwitterAccount;
-import org.agorava.linkedin.model.UpdateAction;
-import org.agorava.linkedin.model.UpdateContent;
-import org.agorava.linkedin.model.UpdateContentCompany;
-import org.agorava.linkedin.model.UpdateContentConnection;
-import org.agorava.linkedin.model.UpdateContentFollow;
-import org.agorava.linkedin.model.UpdateContentGroup;
-import org.agorava.linkedin.model.UpdateContentPersonActivity;
-import org.agorava.linkedin.model.UpdateContentRecommendation;
-import org.agorava.linkedin.model.UpdateContentShare;
-import org.agorava.linkedin.model.UpdateContentStatus;
-import org.agorava.linkedin.model.UpdateContentViral;
-import org.agorava.linkedin.model.UrlResource;
+import org.agorava.linkedin.model.*;
 import org.agorava.linkedin.model.Company.CompanyAddress;
 import org.agorava.linkedin.model.Company.CompanyContactInfo;
 import org.agorava.linkedin.model.Company.CompanyLocation;

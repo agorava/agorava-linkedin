@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@
 package org.agorava.linkedin;
 
 import org.agorava.linkedin.model.Group;
+import org.agorava.linkedin.model.Group.GroupPosts;
 import org.agorava.linkedin.model.GroupMemberships;
 import org.agorava.linkedin.model.GroupSuggestions;
 import org.agorava.linkedin.model.PostComments;
-import org.agorava.linkedin.model.Group.GroupPosts;
 
 /**
  * Operations on LinkedIn Group API

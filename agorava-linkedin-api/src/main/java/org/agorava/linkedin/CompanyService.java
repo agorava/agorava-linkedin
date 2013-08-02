@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,11 @@
 
 package org.agorava.linkedin;
 
-import java.util.List;
-
 import org.agorava.linkedin.model.Companies;
 import org.agorava.linkedin.model.Company;
 import org.agorava.linkedin.model.Products;
+
+import java.util.List;
 
 /**
  * Operations related to Companies on LinkedIn

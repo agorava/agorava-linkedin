@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +16,7 @@
 
 package org.agorava.linkedin.jackson;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.agorava.linkedin.model.ConnectionAuthorization;
-import org.agorava.linkedin.model.CurrentShare;
-import org.agorava.linkedin.model.Education;
-import org.agorava.linkedin.model.ImAccount;
-import org.agorava.linkedin.model.LinkedInDate;
-import org.agorava.linkedin.model.Location;
-import org.agorava.linkedin.model.PhoneNumber;
-import org.agorava.linkedin.model.Position;
-import org.agorava.linkedin.model.Recommendation;
-import org.agorava.linkedin.model.Relation;
-import org.agorava.linkedin.model.TwitterAccount;
-import org.agorava.linkedin.model.UrlResource;
+import org.agorava.linkedin.model.*;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.JsonProcessingException;
@@ -43,6 +28,10 @@ import org.codehaus.jackson.map.JsonDeserializer;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.type.TypeReference;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Antoine Sabot-Durand
