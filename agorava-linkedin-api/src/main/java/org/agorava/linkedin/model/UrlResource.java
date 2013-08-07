@@ -25,7 +25,7 @@ import java.io.Serializable;
  * @author Antoine Sabot-Durand
  */
 public class UrlResource implements Serializable {
-
+// TODO consider replacing this with NamedUrl as in XING module (this class was cut back from Spring Framework and exists there with same name)
     private static final long serialVersionUID = 1L;
 
     private final String name;
