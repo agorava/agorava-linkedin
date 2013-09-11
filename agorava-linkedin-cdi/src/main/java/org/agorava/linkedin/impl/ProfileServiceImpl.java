@@ -18,12 +18,16 @@
  */
 package org.agorava.linkedin.impl;
 
-import org.agorava.LinkedIn;
 import org.agorava.LinkedInBaseService;
 import org.agorava.core.api.event.OAuthComplete;
 import org.agorava.core.api.event.SocialEvent;
+import org.agorava.linkedin.LinkedIn;
 import org.agorava.linkedin.ProfileService;
-import org.agorava.linkedin.model.*;
+import org.agorava.linkedin.model.LinkedInProfile;
+import org.agorava.linkedin.model.LinkedInProfileFull;
+import org.agorava.linkedin.model.LinkedInProfiles;
+import org.agorava.linkedin.model.ProfileField;
+import org.agorava.linkedin.model.SearchParameters;
 
 import javax.enterprise.event.Observes;
 
