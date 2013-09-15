@@ -58,13 +58,6 @@ public class LinkedInProfile extends UserProfile {
         this.profilePictureUrl = profilePictureUrl;
     }
 
-    /**
-     * The user's LinkedIn profile ID
-     */
-    @Override
-    public String getId() {
-        return id;
-    }
 
     /**
      * The user's first name

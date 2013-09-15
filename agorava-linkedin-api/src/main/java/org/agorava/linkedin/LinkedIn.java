@@ -16,7 +16,7 @@
 
 package org.agorava.linkedin;
 
-import org.agorava.core.api.ServiceRelated;
+import org.agorava.core.api.atinject.TierServiceRelated;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Documented;
@@ -29,7 +29,7 @@ import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@ServiceRelated
+@TierServiceRelated
 @Qualifier
 @Target({TYPE, METHOD, PARAMETER, FIELD})
 @Retention(RUNTIME)

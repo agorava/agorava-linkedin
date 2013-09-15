@@ -33,8 +33,11 @@ import java.util.Set;
 public class LinkedInApi extends TierConfigOauth10a {
 
     private final static String MEDIA_NAME = "LinkedIn";
+
     private static final String AUTHORIZE_URL = "https://api.linkedin.com/uas/oauth/authenticate?oauth_token=%s";
+
     private static final String REQUEST_TOKEN_URL = "https://api.linkedin.com/uas/oauth/requestToken";
+
     private final Set<String> scopes;
 
     public LinkedInApi() {
@@ -74,7 +77,7 @@ public class LinkedInApi extends TierConfigOauth10a {
     }
 
     @Override
-    public String getServiceName() {
+    public String getTierName() {
         return MEDIA_NAME;
     }
 
