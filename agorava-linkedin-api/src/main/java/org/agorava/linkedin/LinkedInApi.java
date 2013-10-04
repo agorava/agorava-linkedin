@@ -17,7 +17,7 @@
 package org.agorava.linkedin;
 
 import org.agorava.core.api.oauth.Token;
-import org.agorava.core.spi.TierConfigOauth10a;
+import org.agorava.core.spi.ProviderConfigOauth10a;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -30,7 +30,7 @@ import java.util.Set;
  */
 
 @LinkedIn
-public class LinkedInApi extends TierConfigOauth10a {
+public class LinkedInApi extends ProviderConfigOauth10a {
 
     private final static String MEDIA_NAME = "LinkedIn";
 
@@ -77,7 +77,7 @@ public class LinkedInApi extends TierConfigOauth10a {
     }
 
     @Override
-    public String getTierName() {
+    public String getProviderName() {
         return MEDIA_NAME;
     }
 

@@ -16,7 +16,7 @@
 
 package org.agorava;
 
-import org.agorava.core.cdi.OAuthServiceImpl;
+import org.agorava.core.oauth.OAuth10aServiceImpl;
 import org.agorava.linkedin.LinkedIn;
 
 import java.util.HashMap;
@@ -31,7 +31,7 @@ import java.util.Map;
  */
 
 @LinkedIn
-public class LinkedInOauthService extends OAuthServiceImpl {
+public class LinkedInOauthService extends OAuth10aServiceImpl {
 
     private final static Map<String, String> REQUEST_HEADER = new HashMap<String, String>() {
         {

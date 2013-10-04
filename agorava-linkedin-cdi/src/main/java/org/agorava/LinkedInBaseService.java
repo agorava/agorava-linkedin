@@ -19,7 +19,7 @@
 package org.agorava;
 
 import org.agorava.core.api.oauth.OAuthService;
-import org.agorava.core.spi.TierService;
+import org.agorava.core.spi.ProvideApiService;
 import org.agorava.linkedin.LinkedIn;
 import org.apache.commons.beanutils.BeanMap;
 
@@ -29,7 +29,7 @@ import java.util.Map;
 /**
  * @author Antoine Sabot-Durand
  */
-public abstract class LinkedInBaseService extends TierService {
+public abstract class LinkedInBaseService extends ProvideApiService {
 
     private static String API_ROOT = "https://api.linkedin.com/v1/";
 
