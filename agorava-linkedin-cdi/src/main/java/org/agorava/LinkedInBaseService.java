@@ -18,9 +18,9 @@
  */
 package org.agorava;
 
-import org.agorava.core.api.oauth.OAuthService;
-import org.agorava.core.spi.ProvideApiService;
+import org.agorava.api.oauth.OAuthService;
 import org.agorava.linkedin.LinkedIn;
+import org.agorava.spi.ProvideApiService;
 import org.apache.commons.beanutils.BeanMap;
 
 import javax.inject.Inject;

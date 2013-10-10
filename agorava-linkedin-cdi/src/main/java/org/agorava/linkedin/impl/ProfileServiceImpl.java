@@ -19,8 +19,8 @@
 package org.agorava.linkedin.impl;
 
 import org.agorava.LinkedInBaseService;
-import org.agorava.core.api.event.OAuthComplete;
-import org.agorava.core.api.event.SocialEvent;
+import org.agorava.api.event.OAuthComplete;
+import org.agorava.api.event.SocialEvent;
 import org.agorava.linkedin.LinkedIn;
 import org.agorava.linkedin.ProfileService;
 import org.agorava.linkedin.model.LinkedInProfile;
@@ -59,11 +59,15 @@ public class ProfileServiceImpl extends LinkedInBaseService implements ProfileSe
     }
 
     static final String PROFILE_URL = BASE_URL
-            + "{0}:(id,first-name,last-name,headline,industry,site-standard-profile-request,public-profile-url,picture-url,summary)?format=json";
+            + "{0}:(id,first-name,last-name,headline,industry,site-standard-profile-request,public-profile-url,picture-url," +
+            "summary)?format=json";
 
     static final String PROFILE_URL_FULL;
 
-    static final String PEOPLE_SEARCH_URL = "https://api.linkedin.com/v1/people-search:(people:(id,first-name,last-name,headline,industry,site-standard-profile-request,public-profile-url,picture-url,summary,api-standard-profile-request))?{&keywords}{&first-name}{&last-name}{&company-name}{&current-company}{&title}{&current-title}{&school-name}{&current-school}{&country-code}{&postal-code}{&distance}{&start}{&count}{&sort}";
+    static final String PEOPLE_SEARCH_URL = "https://api.linkedin.com/v1/people-search:(people:(id,first-name,last-name," +
+            "headline,industry,site-standard-profile-request,public-profile-url,picture-url,summary," +
+            "api-standard-profile-request))?{&keywords}{&first-name}{&last-name}{&company-name}{&current-company}{&title" +
+            "}{&current-title}{&school-name}{&current-school}{&country-code}{&postal-code}{&distance}{&start}{&count}{&sort}";
 
 
     public void initMyProfile(@Observes @LinkedIn OAuthComplete oauthComplete) {

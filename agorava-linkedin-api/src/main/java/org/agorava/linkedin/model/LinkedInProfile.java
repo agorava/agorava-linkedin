@@ -16,7 +16,7 @@
 
 package org.agorava.linkedin.model;
 
-import org.agorava.core.spi.UserProfile;
+import org.agorava.spi.UserProfile;
 
 /**
  * Model class containing a user's LinkedIn profile information.

@@ -18,8 +18,8 @@
  */
 package org.agorava.linkedin.cdi;
 
-import org.agorava.core.api.event.SocialEvent.Status;
-import org.agorava.core.api.event.StatusUpdated;
+import org.agorava.api.event.SocialEvent.Status;
+import org.agorava.api.event.StatusUpdated;
 import org.agorava.linkedin.LinkedIn;
 import org.agorava.linkedin.NetworkUpdateService;
 import org.agorava.linkedin.model.NewShare;
