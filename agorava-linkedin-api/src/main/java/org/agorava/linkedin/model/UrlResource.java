@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,8 @@ import java.io.Serializable;
  * @author Antoine Sabot-Durand
  */
 public class UrlResource implements Serializable {
-// TODO consider replacing this with NamedUrl as in XING module (this class was cut back from Spring Framework and exists there with same name)
+    // TODO consider replacing this with NamedUrl as in XING module (this class was cut back from Spring Framework and exists
+    // there with same name)
     private static final long serialVersionUID = 1L;
 
     private final String name;

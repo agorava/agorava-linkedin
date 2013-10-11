@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,8 @@ public class Product implements Serializable {
     private final String websiteUrl;
 
     public Product(Date creationTimestamp, String description, List<String> features, int id, String logoUrl, String name,
-                   int numRecommendations, CodeAndName productCategory, List<ProductRecommendation> recommendations, CodeAndName type,
+                   int numRecommendations, CodeAndName productCategory, List<ProductRecommendation> recommendations,
+                   CodeAndName type,
                    String websiteUrl) {
         this.creationTimestamp = creationTimestamp;
         this.description = description;

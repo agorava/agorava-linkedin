@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,5 +23,6 @@ package org.agorava.linkedin.model;
  * @author Antoine Sabot-Durand
  */
 public enum UpdateType {
-    ANSW, APPM, APPS, CMPY, CONN, NCON, CCEM, JOBP, JGRP, MSFC, PICU, PREC, PRFX, RECU, SVPR, PRFU, PROF, QSTN, SHAR, STAT, VIRL, UNKNOWN
+    ANSW, APPM, APPS, CMPY, CONN, NCON, CCEM, JOBP, JGRP, MSFC, PICU, PREC, PRFX, RECU, SVPR, PRFU, PROF, QSTN, SHAR, STAT,
+    VIRL, UNKNOWN
 }

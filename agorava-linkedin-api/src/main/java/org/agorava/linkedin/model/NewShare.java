@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,8 +71,11 @@ public class NewShare implements Serializable {
         private static final long serialVersionUID = 1L;
 
         private String title;
+
         private String submittedUrl;
+
         private String submittedImageUrl;
+
         private String description;
 
         public NewShareContent() {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,8 @@ abstract class UpdateContentViralMixin {
     @JsonCreator
     UpdateContentViralMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,
                             @JsonProperty("lastName") String lastName, @JsonProperty("headline") String headline,
-                            @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String publicProfileUrl,
+                            @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String
+            publicProfileUrl,
                             @JsonProperty("siteStandardProfileRequest") UrlResource siteStandardProfileRequest,
                             @JsonProperty("pictureUrl") String profilePictureUrl) {
     }

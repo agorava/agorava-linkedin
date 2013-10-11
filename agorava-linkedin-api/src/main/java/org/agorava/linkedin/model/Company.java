@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -170,6 +170,7 @@ public class Company implements Serializable {
         private static final long serialVersionUID = 1L;
 
         private final CompanyAddress address;
+
         private final CompanyContactInfo contactInfo;
 
         public CompanyLocation(CompanyAddress address, CompanyContactInfo contactInfo) {
@@ -190,7 +191,9 @@ public class Company implements Serializable {
         private static final long serialVersionUID = 1L;
 
         private final String city;
+
         private final String postalCode;
+
         private final String street1;
 
         public CompanyAddress(String city, String postalCode, String street1) {
@@ -216,6 +219,7 @@ public class Company implements Serializable {
         private static final long serialVersionUID = 1L;
 
         private final String fax;
+
         private final String phone1;
 
         public CompanyContactInfo(String fax, String phone1) {

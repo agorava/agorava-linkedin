@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,8 @@ public class CurrentShare extends Share {
 
     private LinkedInProfile author;
 
-    public CurrentShare(String comment, ShareContent content, String id, ShareSource source, Date timestamp, String visibility) {
+    public CurrentShare(String comment, ShareContent content, String id, ShareSource source, Date timestamp,
+                        String visibility) {
         super(comment, content, id, source, timestamp, visibility);
     }
 

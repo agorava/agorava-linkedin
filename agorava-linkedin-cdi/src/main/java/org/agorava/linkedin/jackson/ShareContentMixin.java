@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,8 @@ abstract class ShareContentMixin {
 
     @JsonCreator
     ShareContentMixin(@JsonProperty("author") String description, @JsonProperty("eyebrowUrl") String eyebrowUrl,
-                      @JsonProperty("shortenedUrl") String shortenedUrl, @JsonProperty("submittedImageUrl") String submittedImageUrl,
+                      @JsonProperty("shortenedUrl") String shortenedUrl, @JsonProperty("submittedImageUrl") String
+            submittedImageUrl,
                       @JsonProperty("submittedUrl") String submittedUrl, @JsonProperty("thumbnailUrl") String thumbnailUrl,
                       @JsonProperty("title") String title) {
     }
