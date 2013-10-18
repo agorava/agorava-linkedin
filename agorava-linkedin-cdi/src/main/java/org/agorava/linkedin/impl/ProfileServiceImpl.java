@@ -19,8 +19,6 @@
 package org.agorava.linkedin.impl;
 
 import org.agorava.LinkedInBaseService;
-import org.agorava.api.event.OAuthComplete;
-import org.agorava.api.event.SocialEvent;
 import org.agorava.linkedin.LinkedIn;
 import org.agorava.linkedin.ProfileService;
 import org.agorava.linkedin.model.LinkedInProfile;
@@ -29,11 +27,11 @@ import org.agorava.linkedin.model.LinkedInProfiles;
 import org.agorava.linkedin.model.ProfileField;
 import org.agorava.linkedin.model.SearchParameters;
 
-import javax.enterprise.event.Observes;
-
 /**
  * @author Antoine Sabot-Durand
  */
+
+@LinkedIn
 public class ProfileServiceImpl extends LinkedInBaseService implements ProfileService {
 
     static {
@@ -69,12 +67,6 @@ public class ProfileServiceImpl extends LinkedInBaseService implements ProfileSe
             "api-standard-profile-request))?{&keywords}{&first-name}{&last-name}{&company-name}{&current-company}{&title" +
             "}{&current-title}{&school-name}{&current-school}{&country-code}{&postal-code}{&distance}{&start}{&count}{&sort}";
 
-
-    public void initMyProfile(@Observes @LinkedIn OAuthComplete oauthComplete) {
-        if (oauthComplete.getStatus() == SocialEvent.Status.SUCCESS)
-            oauthComplete.getEventData().setUserProfile(getUserProfile());
-
-    }
 
     @Override
     public String getProfileId() {
