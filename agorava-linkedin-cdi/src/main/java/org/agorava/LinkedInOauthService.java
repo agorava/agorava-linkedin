@@ -16,8 +16,8 @@
 
 package org.agorava;
 
-import org.agorava.cdi.OAuth10aServiceImpl;
 import org.agorava.linkedin.LinkedIn;
+import org.agorava.oauth.OAuth10aServiceImpl;
 
 import java.util.HashMap;
 import java.util.Map;
