@@ -16,12 +16,12 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.agorava.linkedin.model.Recommendation;
 import org.agorava.linkedin.model.UrlResource;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ import java.util.List;
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class UpdateContentRecommendationMixin {
+abstract class UpdateContentRecommendationMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     UpdateContentRecommendationMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,

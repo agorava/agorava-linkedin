@@ -16,10 +16,10 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.agorava.linkedin.model.Job;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.util.Date;
 
@@ -27,7 +27,7 @@ import java.util.Date;
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class JobBookmarkMixin {
+abstract class JobBookmarkMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     JobBookmarkMixin(@JsonProperty("isApplied") boolean isApplied, @JsonProperty("isSaved") boolean isSaved,

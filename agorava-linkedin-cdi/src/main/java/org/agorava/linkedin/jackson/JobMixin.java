@@ -16,10 +16,14 @@
 
 package org.agorava.linkedin.jackson;
 
-import org.agorava.linkedin.model.*;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.agorava.linkedin.model.Company;
+import org.agorava.linkedin.model.JobPosition;
+import org.agorava.linkedin.model.LinkedInDate;
+import org.agorava.linkedin.model.LinkedInProfile;
+import org.agorava.linkedin.model.UrlResource;
 
 import java.util.Date;
 
@@ -27,7 +31,7 @@ import java.util.Date;
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class JobMixin {
+abstract class JobMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     JobMixin(@JsonProperty("company") Company company, @JsonProperty("description") String description,

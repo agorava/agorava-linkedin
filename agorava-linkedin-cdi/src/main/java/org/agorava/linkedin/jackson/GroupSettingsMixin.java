@@ -16,18 +16,18 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.agorava.linkedin.model.Group;
 import org.agorava.linkedin.model.Group.MembershipState;
 import org.agorava.linkedin.model.GroupSettings.EmailDigestFrequency;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.DeserializationContext;
-import org.codehaus.jackson.map.JsonDeserializer;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 import java.io.IOException;
 
@@ -35,16 +35,18 @@ import java.io.IOException;
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class GroupSettingsMixin {
+abstract class GroupSettingsMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     GroupSettingsMixin(
             @JsonProperty("allowMessagesFromMembers") Boolean allowMessagesFromMembers,
             @JsonProperty("emailAnnouncementsFromManagers") Boolean emailAnnouncementsFromManagers,
-            @JsonProperty("emailDigestFrequency") @JsonDeserialize(using = EmailDigestFrequencyDeserializer.class) EmailDigestFrequency emailDigestFrequency,
+            @JsonProperty("emailDigestFrequency") @JsonDeserialize(using = EmailDigestFrequencyDeserializer.class)
+            EmailDigestFrequency emailDigestFrequency,
             @JsonProperty("emailForEveryNewPost") Boolean emailForEveryNewPost,
             @JsonProperty("group") Group group,
-            @JsonProperty("membershipState") @JsonDeserialize(using = MembershipStateDeserializer.class) MembershipState membershipState,
+            @JsonProperty("membershipState") @JsonDeserialize(using = MembershipStateDeserializer.class) MembershipState
+                    membershipState,
             @JsonProperty("showGroupLogoInProfile") Boolean showGroupLogoInProfile) {
     }
 
@@ -53,7 +55,7 @@ abstract class GroupSettingsMixin {
         public EmailDigestFrequency deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
                 JsonProcessingException {
             JsonNode node = jp.readValueAsTree();
-            return EmailDigestFrequency.valueOf(node.get("code").getTextValue().replace('-', '_').toUpperCase());
+            return EmailDigestFrequency.valueOf(node.get("code").textValue().replace('-', '_').toUpperCase());
         }
     }
 
@@ -62,7 +64,7 @@ abstract class GroupSettingsMixin {
         public MembershipState deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
                 JsonProcessingException {
             JsonNode node = jp.readValueAsTree();
-            return MembershipState.valueOf(node.get("code").getTextValue().replace('-', '_').toUpperCase());
+            return MembershipState.valueOf(node.get("code").textValue().replace('-', '_').toUpperCase());
         }
     }
 

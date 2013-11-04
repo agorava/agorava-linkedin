@@ -16,19 +16,19 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.agorava.linkedin.model.LinkedInProfile;
 import org.agorava.linkedin.model.UrlResource;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.DeserializationContext;
-import org.codehaus.jackson.map.JsonDeserializer;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
-import org.codehaus.jackson.type.TypeReference;
 
 import java.io.IOException;
 import java.util.List;
@@ -37,12 +37,13 @@ import java.util.List;
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class UpdateContentConnectionMixin {
+abstract class UpdateContentConnectionMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     UpdateContentConnectionMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,
                                  @JsonProperty("lastName") String lastName, @JsonProperty("headline") String headline,
-                                 @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String publicProfileUrl,
+                                 @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String
+            publicProfileUrl,
                                  @JsonProperty("siteStandardProfileRequest") UrlResource siteStandardProfileRequest,
                                  @JsonProperty("pictureUrl") String profilePictureUrl) {
     }
@@ -60,12 +61,11 @@ abstract class UpdateContentConnectionMixin {
         public List<LinkedInProfile> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
                 JsonProcessingException {
             ObjectMapper mapper = new ObjectMapper();
-            mapper.setDeserializationConfig(ctxt.getConfig());
             jp.setCodec(mapper);
             if (jp.hasCurrentToken()) {
-                JsonNode dataNode = jp.readValueAsTree().get("values");
-                return (List<LinkedInProfile>) mapper.readValue(dataNode, new TypeReference<List<LinkedInProfile>>() {
-                });
+                JsonNode dataNode = jp.readValueAs(JsonNode.class).get("values");
+                return (List<LinkedInProfile>) mapper.reader(new TypeReference<List<LinkedInProfile>>() {
+                }).readValue(dataNode);
             }
 
             return null;

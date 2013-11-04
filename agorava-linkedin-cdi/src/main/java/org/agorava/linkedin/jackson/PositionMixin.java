@@ -16,17 +16,17 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.agorava.linkedin.model.Company;
 import org.agorava.linkedin.model.LinkedInDate;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class PositionMixin {
+abstract class PositionMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     PositionMixin(@JsonProperty("company") Company company, @JsonProperty("id") String id,

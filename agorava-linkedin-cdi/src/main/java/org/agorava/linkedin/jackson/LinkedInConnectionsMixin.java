@@ -16,9 +16,9 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.agorava.linkedin.model.LinkedInProfile;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ import java.util.List;
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class LinkedInConnectionsMixin {
+abstract class LinkedInConnectionsMixin extends LinkedInObjectMixin {
 
     LinkedInConnectionsMixin(@JsonProperty("values") List<LinkedInProfile> connections) {
     }

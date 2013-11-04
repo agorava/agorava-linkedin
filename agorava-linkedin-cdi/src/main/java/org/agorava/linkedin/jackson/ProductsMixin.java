@@ -16,10 +16,10 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.agorava.linkedin.model.Product;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ import java.util.List;
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class ProductsMixin {
+abstract class ProductsMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     ProductsMixin(@JsonProperty("_count") int count, @JsonProperty("_start") int start, @JsonProperty("_total") int total) {

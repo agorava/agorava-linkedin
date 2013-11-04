@@ -16,10 +16,10 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.agorava.linkedin.model.LinkedInNetworkUpdate;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 import java.util.List;
 
@@ -27,10 +27,11 @@ import java.util.List;
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class LinkedInNetworkUpdatesMixin {
+abstract class LinkedInNetworkUpdatesMixin extends LinkedInObjectMixin {
 
     LinkedInNetworkUpdatesMixin(
-            @JsonProperty("values") @JsonDeserialize(contentUsing = LinkedInNetworkUpdateListDeserializer.class) List<LinkedInNetworkUpdate> updates) {
+            @JsonProperty("values") @JsonDeserialize(contentUsing = LinkedInNetworkUpdateListDeserializer.class)
+            List<LinkedInNetworkUpdate> updates) {
     }
 
 }

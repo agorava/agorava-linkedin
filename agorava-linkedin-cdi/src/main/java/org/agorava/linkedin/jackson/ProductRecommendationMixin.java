@@ -16,10 +16,10 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.agorava.linkedin.model.LinkedInProfile;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.util.Date;
 
@@ -27,11 +27,12 @@ import java.util.Date;
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class ProductRecommendationMixin {
+abstract class ProductRecommendationMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     ProductRecommendationMixin(@JsonProperty(value = "id") int id, @JsonProperty(value = "productId") int productId,
-                               @JsonProperty(value = "recommender") LinkedInProfile recommender, @JsonProperty(value = "text") String text,
+                               @JsonProperty(value = "recommender") LinkedInProfile recommender,
+                               @JsonProperty(value = "text") String text,
                                @JsonProperty(value = "timestamp") Date timestamp) {
     }
 

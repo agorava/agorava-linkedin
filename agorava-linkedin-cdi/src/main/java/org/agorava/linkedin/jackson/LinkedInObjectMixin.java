@@ -16,18 +16,16 @@
 
 package org.agorava.linkedin.jackson;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class CodeAndNameMixin extends LinkedInObjectMixin {
+abstract class LinkedInObjectMixin {
 
-    @JsonCreator
-    CodeAndNameMixin(@JsonProperty(value = "code") String code, @JsonProperty(value = "name") String name) {
-    }
+    @JsonAnySetter
+    abstract void add(String key, Object value);
 
 }

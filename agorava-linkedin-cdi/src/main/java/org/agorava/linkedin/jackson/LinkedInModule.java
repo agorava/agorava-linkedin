@@ -16,6 +16,8 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.agorava.linkedin.LinkedIn;
 import org.agorava.linkedin.model.CodeAndName;
 import org.agorava.linkedin.model.Comment;
@@ -80,8 +82,6 @@ import org.agorava.linkedin.model.UpdateContentShare;
 import org.agorava.linkedin.model.UpdateContentStatus;
 import org.agorava.linkedin.model.UpdateContentViral;
 import org.agorava.linkedin.model.UrlResource;
-import org.codehaus.jackson.Version;
-import org.codehaus.jackson.map.module.SimpleModule;
 
 /**
  * Jackson module for registering mixin annotations against LinkedIn model classes.

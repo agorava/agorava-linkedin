@@ -16,18 +16,18 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.agorava.linkedin.model.Group.GroupAvailableAction;
 import org.agorava.linkedin.model.Group.MembershipState;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.DeserializationContext;
-import org.codehaus.jackson.map.JsonDeserializer;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,27 +37,27 @@ import java.util.List;
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class GroupRelationMixin {
+abstract class GroupRelationMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     GroupRelationMixin(
-            @JsonProperty("availableActions") @JsonDeserialize(using = AvailableActionDeserializer.class) List<GroupAvailableAction> availableActions,
-            @JsonProperty("membershipState") @JsonDeserialize(using = MembershipStateDeserializer.class) MembershipState membershipState) {
+            @JsonProperty("availableActions") @JsonDeserialize(using = AvailableActionDeserializer.class)
+            List<GroupAvailableAction> availableActions,
+            @JsonProperty("membershipState") @JsonDeserialize(using = MembershipStateDeserializer.class) MembershipState
+                    membershipState) {
     }
 
     private static final class AvailableActionDeserializer extends JsonDeserializer<List<GroupAvailableAction>> {
-        @Override
         public List<GroupAvailableAction> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
                 JsonProcessingException {
             ObjectMapper mapper = new ObjectMapper();
-            mapper.setDeserializationConfig(ctxt.getConfig());
             jp.setCodec(mapper);
             List<GroupAvailableAction> actions = new ArrayList<GroupAvailableAction>();
             if (jp.hasCurrentToken()) {
-                JsonNode dataNode = jp.readValueAsTree().get("values");
+                JsonNode dataNode = jp.readValueAs(JsonNode.class).get("values");
                 if (dataNode != null) {
                     for (JsonNode d : dataNode) {
-                        String s = d.path("code").getTextValue();
+                        String s = d.path("code").textValue();
                         if (s != null) {
                             actions.add(GroupAvailableAction.valueOf(s.replace('-', '_').toUpperCase()));
                         }
@@ -73,7 +73,7 @@ abstract class GroupRelationMixin {
         public MembershipState deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
                 JsonProcessingException {
             JsonNode node = jp.readValueAsTree();
-            return MembershipState.valueOf(node.get("code").getTextValue().replace('-', '_').toUpperCase());
+            return MembershipState.valueOf(node.get("code").textValue().replace('-', '_').toUpperCase());
         }
     }
 

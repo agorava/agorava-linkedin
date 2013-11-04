@@ -16,14 +16,14 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.agorava.linkedin.model.Recommendation;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.DeserializationContext;
-import org.codehaus.jackson.map.JsonDeserializer;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
 
 import java.io.IOException;
 import java.util.List;
@@ -37,16 +37,14 @@ class RecommendationsListDeserializer extends JsonDeserializer<List<Recommendati
     public List<Recommendation> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
             JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.setDeserializationConfig(ctxt.getConfig());
         jp.setCodec(mapper);
         if (jp.hasCurrentToken()) {
-            JsonNode dataNode = jp.readValueAsTree().get("values");
+            JsonNode dataNode = jp.readValueAs(JsonNode.class).get("values");
             if (dataNode != null) {
-                return mapper.readValue(dataNode, new TypeReference<List<Recommendation>>() {
-                });
+                return mapper.reader(new TypeReference<List<Recommendation>>() {
+                }).readValue(dataNode);
             }
         }
         return null;
     }
-
 }

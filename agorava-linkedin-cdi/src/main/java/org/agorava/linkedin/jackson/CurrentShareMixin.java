@@ -16,13 +16,13 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.agorava.linkedin.model.LinkedInProfile;
 import org.agorava.linkedin.model.Share.ShareContent;
 import org.agorava.linkedin.model.Share.ShareSource;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 import java.util.Date;
 
@@ -30,7 +30,7 @@ import java.util.Date;
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class CurrentShareMixin {
+abstract class CurrentShareMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     CurrentShareMixin(@JsonProperty("comment") String comment, @JsonProperty("content") ShareContent content,

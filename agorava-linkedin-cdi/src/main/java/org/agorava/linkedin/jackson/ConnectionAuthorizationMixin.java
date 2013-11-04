@@ -16,12 +16,12 @@
 
 package org.agorava.linkedin.jackson;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Antoine Sabot-Durand
  */
-abstract class ConnectionAuthorizationMixin {
+abstract class ConnectionAuthorizationMixin extends LinkedInObjectMixin {
 
     ConnectionAuthorizationMixin(@JsonProperty("name") String name, @JsonProperty("value") String value) {
     }
