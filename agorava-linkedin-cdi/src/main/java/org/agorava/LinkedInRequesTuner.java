@@ -16,34 +16,30 @@
 
 package org.agorava;
 
+import org.agorava.api.rest.Request;
+import org.agorava.api.rest.RequestTuner;
 import org.agorava.linkedin.LinkedIn;
-import org.agorava.oauth.OAuth10aServiceImpl;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created with IntelliJ IDEA.
- * User: antoine
- * Date: 19/06/13
- * Time: 18:41
- * To change this template use File | Settings | File Templates.
+ * @author Antoine Sabot-Durand
  */
-
 @LinkedIn
-public class LinkedInOauthService extends OAuth10aServiceImpl {
+public class LinkedInRequesTuner implements RequestTuner {
 
     private final static Map<String, String> REQUEST_HEADER = new HashMap<String, String>() {
-        {
-            put("Content-Type", "application/json");
-            put("x-li-format", "json");
+            {
+                put("Content-Type", "application/json");
+                put("x-li-format", "json");
 
-        }
-    };
+            }
+        };
 
+    @Override
+    public void tune(Request request) {
+        request.getHeaders().putAll(REQUEST_HEADER);
 
-    public LinkedInOauthService() {
-        super();
-        setRequestHeader(REQUEST_HEADER);
     }
 }
