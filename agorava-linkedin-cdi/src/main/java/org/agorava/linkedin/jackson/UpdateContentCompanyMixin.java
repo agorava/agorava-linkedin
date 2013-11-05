@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.agorava.api.atinject.BeanResolver;
 import org.agorava.linkedin.model.Company;
 import org.agorava.linkedin.model.CompanyJobUpdate;
 import org.agorava.linkedin.model.Share;
@@ -62,7 +63,7 @@ abstract class UpdateContentCompanyMixin extends LinkedInObjectMixin {
     private static final class CompanyStatusUpdateDeserializer extends JsonDeserializer<Share> {
         @Override
         public Share deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-            ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = BeanResolver.getInstance().resolve(ObjectMapper.class);
             jp.setCodec(mapper);
             JsonNode node = (JsonNode) jp.readValueAs(JsonNode.class);
             return mapper.reader(new TypeReference<Share>() {

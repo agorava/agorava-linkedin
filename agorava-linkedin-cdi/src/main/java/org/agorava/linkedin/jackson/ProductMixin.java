@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.agorava.api.atinject.BeanResolver;
 import org.agorava.linkedin.model.CodeAndName;
 import org.agorava.linkedin.model.Product.ProductRecommendation;
 
@@ -59,7 +60,7 @@ abstract class ProductMixin extends LinkedInObjectMixin {
         @Override
         public List<ProductRecommendation> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
                 JsonProcessingException {
-            ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = BeanResolver.getInstance().resolve(ObjectMapper.class);
             jp.setCodec(mapper);
             if (jp.hasCurrentToken()) {
                 JsonNode dataNode = jp.readValueAs(JsonNode.class).get("values");

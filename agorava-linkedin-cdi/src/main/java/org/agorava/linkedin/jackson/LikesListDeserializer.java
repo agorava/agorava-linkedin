@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.agorava.api.atinject.BeanResolver;
 import org.agorava.linkedin.model.LinkedInProfile;
 
 import java.io.IOException;
@@ -37,7 +38,7 @@ class LikesListDeserializer extends JsonDeserializer<List<LinkedInProfile>> {
     @Override
     public List<LinkedInProfile> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
             JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = BeanResolver.getInstance().resolve(ObjectMapper.class);
         jp.setCodec(mapper);
         if (jp.hasCurrentToken()) {
             JsonNode dataNode = jp.readValueAs(JsonNode.class).get("values");

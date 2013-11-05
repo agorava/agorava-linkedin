@@ -34,7 +34,8 @@ abstract class UpdateContentRecommendationMixin extends LinkedInObjectMixin {
     @JsonCreator
     UpdateContentRecommendationMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,
                                      @JsonProperty("lastName") String lastName, @JsonProperty("headline") String headline,
-                                     @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String publicProfileUrl,
+                                     @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String
+            publicProfileUrl,
                                      @JsonProperty("siteStandardProfileRequest") UrlResource siteStandardProfileRequest,
                                      @JsonProperty("pictureUrl") String profilePictureUrl) {
     }

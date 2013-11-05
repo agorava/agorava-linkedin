@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.agorava.api.atinject.BeanResolver;
 import org.agorava.linkedin.model.ConnectionAuthorization;
 
 import java.io.IOException;
@@ -36,7 +37,7 @@ final class ConnectionAuthorizationDeserializer extends JsonDeserializer<Connect
     @Override
     public ConnectionAuthorization deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
             JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = BeanResolver.getInstance().resolve(ObjectMapper.class);
         if (jp.hasCurrentToken() && jp.getCurrentToken().equals(JsonToken.START_OBJECT)) {
             JsonNode dataNode = jp.readValueAs(JsonNode.class).get("headers").get("values").get(0);
             if (dataNode != null) {

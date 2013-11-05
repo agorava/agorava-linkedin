@@ -28,7 +28,7 @@ import org.agorava.spi.UserProfileService;
  * @author Robert Drysdale
  * @author Antoine Sabot-Durand
  */
-public interface ProfileService extends UserProfileService{
+public interface ProfileService extends UserProfileService {
 
     /**
      * Retrieves the user's LinkedIn profile ID.

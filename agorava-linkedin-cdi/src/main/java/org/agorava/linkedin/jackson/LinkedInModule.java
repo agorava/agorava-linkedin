@@ -16,7 +16,6 @@
 
 package org.agorava.linkedin.jackson;
 
-import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.agorava.linkedin.LinkedIn;
 import org.agorava.linkedin.model.CodeAndName;
@@ -92,7 +91,7 @@ import org.agorava.linkedin.model.UrlResource;
 public class LinkedInModule extends SimpleModule {
 
     public LinkedInModule() {
-        super("LinkedInModule", new Version(1, 0, 0, null));
+        super("LinkedInModule");
     }
 
     @Override

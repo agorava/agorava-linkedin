@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.agorava.api.atinject.BeanResolver;
 import org.agorava.linkedin.model.Company;
 import org.agorava.linkedin.model.LinkedInNetworkUpdate;
 import org.agorava.linkedin.model.UpdateAction;
@@ -49,7 +50,7 @@ class LinkedInNetworkUpdateListDeserializer extends JsonDeserializer<LinkedInNet
     @Override
     public LinkedInNetworkUpdate deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
             JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = BeanResolver.getInstance().resolve(ObjectMapper.class);
         jp.setCodec(mapper);
 
         JsonNode dataNode = jp.readValueAs(JsonNode.class);

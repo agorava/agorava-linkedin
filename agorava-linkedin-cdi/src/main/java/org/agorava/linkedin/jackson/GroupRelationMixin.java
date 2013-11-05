@@ -26,6 +26,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.agorava.api.atinject.BeanResolver;
 import org.agorava.linkedin.model.Group.GroupAvailableAction;
 import org.agorava.linkedin.model.Group.MembershipState;
 
@@ -50,7 +51,7 @@ abstract class GroupRelationMixin extends LinkedInObjectMixin {
     private static final class AvailableActionDeserializer extends JsonDeserializer<List<GroupAvailableAction>> {
         public List<GroupAvailableAction> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
                 JsonProcessingException {
-            ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = BeanResolver.getInstance().resolve(ObjectMapper.class);
             jp.setCodec(mapper);
             List<GroupAvailableAction> actions = new ArrayList<GroupAvailableAction>();
             if (jp.hasCurrentToken()) {

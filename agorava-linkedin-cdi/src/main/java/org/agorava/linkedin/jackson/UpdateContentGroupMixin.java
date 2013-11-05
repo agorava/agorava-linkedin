@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.agorava.api.atinject.BeanResolver;
 import org.agorava.linkedin.model.MemberGroup;
 import org.agorava.linkedin.model.UrlResource;
 
@@ -57,7 +58,7 @@ abstract class UpdateContentGroupMixin extends LinkedInObjectMixin {
         @Override
         public List<MemberGroup> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
                 JsonProcessingException {
-            ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = BeanResolver.getInstance().resolve(ObjectMapper.class);
             jp.setCodec(mapper);
             if (jp.hasCurrentToken()) {
                 JsonNode dataNode = jp.readValueAs(JsonNode.class).get("values");

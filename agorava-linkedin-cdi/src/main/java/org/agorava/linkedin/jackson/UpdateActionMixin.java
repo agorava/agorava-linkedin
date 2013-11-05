@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.agorava.api.atinject.BeanResolver;
 import org.agorava.linkedin.model.Comment;
 import org.agorava.linkedin.model.LinkedInProfile;
 import org.agorava.linkedin.model.UpdateContent;
@@ -77,7 +78,7 @@ abstract class UpdateActionMixin extends LinkedInObjectMixin {
     private static class CommentsListDeserializer extends JsonDeserializer<List<Comment>> {
         public List<Comment> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
                 JsonProcessingException {
-            ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = BeanResolver.getInstance().resolve(ObjectMapper.class);
             jp.setCodec(mapper);
             if (jp.hasCurrentToken()) {
                 JsonNode dataNode = jp.readValueAs(JsonNode.class).get("values");
@@ -94,7 +95,7 @@ abstract class UpdateActionMixin extends LinkedInObjectMixin {
         @Override
         public UpdateContent deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
                 JsonProcessingException {
-            ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = BeanResolver.getInstance().resolve(ObjectMapper.class);
             jp.setCodec(mapper);
 
             JsonNode content = jp.readValueAs(JsonNode.class);

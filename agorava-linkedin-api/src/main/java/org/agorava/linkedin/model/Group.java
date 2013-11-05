@@ -32,19 +32,33 @@ public class Group implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Boolean allowMemberInvites;
+
     private GroupCategory category;
+
     private List<GroupCount> countsByCategory;
+
     private String description;
+
     private final Integer id;
+
     private Boolean isOpenToNonMembers;
+
     private String largeLogoUrl;
+
     private String locale;
+
     private final String name;
+
     private GroupPosts posts;
+
     private GroupRelation relationToViewer;
+
     private String shortDescription;
+
     private String siteGroupUrl;
+
     private String smallLogoUrl;
+
     private String websiteUrl;
 
     public Group(Integer id, String name) {
@@ -117,6 +131,7 @@ public class Group implements Serializable {
         private static final long serialVersionUID = 1L;
 
         private final PostCategory category;
+
         private final Integer count;
 
         public GroupCount(PostCategory category, Integer count) {
@@ -153,6 +168,7 @@ public class Group implements Serializable {
         private static final long serialVersionUID = 1L;
 
         private final List<GroupAvailableAction> availableActions;
+
         private final MembershipState membershipState;
 
         public GroupRelation(List<GroupAvailableAction> availableActions, MembershipState membershipState) {
