@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 /**
  *
  */
@@ -27,10 +28,13 @@ import org.agorava.linkedin.model.LinkedInProfiles;
 import org.agorava.linkedin.model.ProfileField;
 import org.agorava.linkedin.model.SearchParameters;
 
+import javax.inject.Named;
+
 /**
  * @author Antoine Sabot-Durand
  */
 
+@Named
 @LinkedIn
 public class ProfileServiceImpl extends LinkedInBaseService implements ProfileService {
 

@@ -20,6 +20,7 @@
 package org.agorava.linkedin.impl;
 
 import org.agorava.LinkedInBaseService;
+import org.agorava.linkedin.LinkedIn;
 import org.agorava.linkedin.NetworkUpdateService;
 import org.agorava.linkedin.model.Comment;
 import org.agorava.linkedin.model.Comments;
@@ -45,6 +46,7 @@ import static java.util.Collections.singletonMap;
  * @author Antoine Sabot-Durand
  */
 @Named
+@LinkedIn
 public class NetworkUpdateServiceImpl extends LinkedInBaseService implements NetworkUpdateService {
 
     static {
