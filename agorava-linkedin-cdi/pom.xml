@@ -23,6 +23,10 @@
         <version>0.7.0-SNAPSHOT</version>
     </parent>
     <artifactId>agorava-linkedin-cdi</artifactId>
+    <properties>
+        <commons-collection.version>3.2.1</commons-collection.version>
+        <commons-beanutils.version>1.8.3</commons-beanutils.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -35,13 +39,24 @@
         </dependency>
 
         <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
+            <version>${commons-collection.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons-beanutils.version}</version>
+            <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
