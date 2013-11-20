@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,6 +83,7 @@ public class Position implements Serializable {
 
     public static final class StartDate {
         private final int month;
+
         private final int year;
 
         public StartDate(int month, int year) {

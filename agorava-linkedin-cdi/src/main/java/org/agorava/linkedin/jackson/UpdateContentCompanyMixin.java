@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,33 +16,36 @@
 
 package org.agorava.linkedin.jackson;
 
-import java.io.IOException;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.agorava.api.atinject.BeanResolver;
 import org.agorava.linkedin.model.Company;
 import org.agorava.linkedin.model.CompanyJobUpdate;
 import org.agorava.linkedin.model.Share;
 import org.agorava.linkedin.model.UrlResource;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.DeserializationContext;
-import org.codehaus.jackson.map.JsonDeserializer;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
-import org.codehaus.jackson.type.TypeReference;
+
+import java.io.IOException;
 
 /**
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class UpdateContentCompanyMixin {
+abstract class UpdateContentCompanyMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     UpdateContentCompanyMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,
                               @JsonProperty("lastName") String lastName, @JsonProperty("headline") String headline,
-                              @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String publicProfileUrl,
+                              @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String
+            publicProfileUrl,
                               @JsonProperty("siteStandardProfileRequest") UrlResource siteStandardProfileRequest,
                               @JsonProperty("pictureUrl") String profilePictureUrl) {
     }
@@ -60,12 +63,11 @@ abstract class UpdateContentCompanyMixin {
     private static final class CompanyStatusUpdateDeserializer extends JsonDeserializer<Share> {
         @Override
         public Share deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.setDeserializationConfig(ctxt.getConfig());
+            ObjectMapper mapper = BeanResolver.getInstance().resolve(ObjectMapper.class);
             jp.setCodec(mapper);
-
-            return mapper.readValue(jp.readValueAsTree().get("share"), new TypeReference<Share>() {
-            });
+            JsonNode node = (JsonNode) jp.readValueAs(JsonNode.class);
+            return mapper.reader(new TypeReference<Share>() {
+            }).readValue(node.get("share"));
         }
 
     }

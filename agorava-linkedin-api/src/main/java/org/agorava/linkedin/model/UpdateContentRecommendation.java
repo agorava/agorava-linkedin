@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,8 @@ public class UpdateContentRecommendation extends UpdateContent {
     private List<Recommendation> recommendationsReceived;
 
     public UpdateContentRecommendation(String id, String firstName, String lastName, String headline, String industry,
-                                       String publicProfileUrl, UrlResource siteStandardProfileRequest, String profilePictureUrl) {
+                                       String publicProfileUrl, UrlResource siteStandardProfileRequest,
+                                       String profilePictureUrl) {
         super(id, firstName, lastName, headline, industry, publicProfileUrl, siteStandardProfileRequest, profilePictureUrl);
     }
 

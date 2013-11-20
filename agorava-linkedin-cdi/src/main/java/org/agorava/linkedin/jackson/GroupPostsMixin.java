@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,18 @@
 
 package org.agorava.linkedin.jackson;
 
-import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.agorava.linkedin.model.Post;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
+
+import java.util.List;
 
 /**
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class GroupPostsMixin {
+abstract class GroupPostsMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     GroupPostsMixin(@JsonProperty("_count") int count, @JsonProperty("_start") int start, @JsonProperty("_total") int total) {

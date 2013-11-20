@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,17 +18,17 @@
  */
 package org.agorava.linkedin.cdi;
 
+import org.agorava.api.event.SocialEvent.Status;
+import org.agorava.api.event.StatusUpdated;
+import org.agorava.linkedin.LinkedIn;
+import org.agorava.linkedin.NetworkUpdateService;
+import org.agorava.linkedin.model.NewShare;
+
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;
 import javax.enterprise.event.Event;
 import javax.enterprise.inject.Any;
 import javax.inject.Inject;
-
-import org.agorava.LinkedIn;
-import org.agorava.core.api.event.SocialEvent.Status;
-import org.agorava.core.api.event.StatusUpdated;
-import org.agorava.linkedin.NetworkUpdateService;
-import org.agorava.linkedin.model.NewShare;
 
 @Decorator
 /**

@@ -13,20 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 /**
  *
  */
 package org.agorava;
 
-import org.agorava.core.api.oauth.OAuthService;
-import org.agorava.core.oauth.AbstractApiService;
+import org.agorava.api.oauth.OAuthService;
+import org.agorava.linkedin.LinkedIn;
+import org.agorava.spi.ProviderApiService;
+import org.apache.commons.beanutils.BeanMap;
 
 import javax.inject.Inject;
+import java.util.Map;
 
 /**
  * @author Antoine Sabot-Durand
  */
-public abstract class LinkedInBaseService extends AbstractApiService {
+public abstract class LinkedInBaseService extends ProviderApiService {
 
     private static String API_ROOT = "https://api.linkedin.com/v1/";
 
@@ -36,13 +40,19 @@ public abstract class LinkedInBaseService extends AbstractApiService {
     @LinkedIn
     private OAuthService service;
 
+
+    public String buildUri(String url, Object pojo) {
+        Map beanMap = new BeanMap(pojo);
+        return params.addMap(beanMap).asUrl(url);
+    }
+
     @Override
     public OAuthService getService() {
         return service;
     }
 
     @Override
-    public String buildUri(String url) {
-        return API_ROOT + url;
+    public String buildAbsoluteUri(String uri) {
+        return API_ROOT + uri;
     }
 }

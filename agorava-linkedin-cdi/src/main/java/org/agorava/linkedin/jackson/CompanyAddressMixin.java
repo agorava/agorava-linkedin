@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,14 @@
 
 package org.agorava.linkedin.jackson;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class CompanyAddressMixin {
+abstract class CompanyAddressMixin extends LinkedInObjectMixin {
 
     CompanyAddressMixin(@JsonProperty(value = "city") String city, @JsonProperty(value = "postalCode") String postalcode,
                         @JsonProperty(value = "street1") String street1) {

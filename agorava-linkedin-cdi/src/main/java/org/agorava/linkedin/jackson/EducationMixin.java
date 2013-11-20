@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,16 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.agorava.linkedin.model.LinkedInDate;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class EducationMixin {
+abstract class EducationMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     EducationMixin(@JsonProperty("activities") String activities, @JsonProperty("degree") String degree,

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,24 @@
 
 package org.agorava.linkedin.jackson;
 
-import org.agorava.LinkedIn;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import org.agorava.linkedin.LinkedIn;
 import org.agorava.linkedin.model.CodeAndName;
 import org.agorava.linkedin.model.Comment;
 import org.agorava.linkedin.model.Comments;
 import org.agorava.linkedin.model.Companies;
 import org.agorava.linkedin.model.Company;
+import org.agorava.linkedin.model.Company.CompanyAddress;
+import org.agorava.linkedin.model.Company.CompanyContactInfo;
+import org.agorava.linkedin.model.Company.CompanyLocation;
 import org.agorava.linkedin.model.CompanyJobUpdate;
 import org.agorava.linkedin.model.ConnectionAuthorization;
 import org.agorava.linkedin.model.CurrentShare;
 import org.agorava.linkedin.model.Education;
 import org.agorava.linkedin.model.Group;
+import org.agorava.linkedin.model.Group.GroupCount;
+import org.agorava.linkedin.model.Group.GroupPosts;
+import org.agorava.linkedin.model.Group.GroupRelation;
 import org.agorava.linkedin.model.GroupMemberships;
 import org.agorava.linkedin.model.GroupSettings;
 import org.agorava.linkedin.model.GroupSuggestions;
@@ -51,9 +58,12 @@ import org.agorava.linkedin.model.PersonActivity;
 import org.agorava.linkedin.model.PhoneNumber;
 import org.agorava.linkedin.model.Position;
 import org.agorava.linkedin.model.Post;
+import org.agorava.linkedin.model.Post.Attachment;
+import org.agorava.linkedin.model.Post.PostRelation;
 import org.agorava.linkedin.model.PostComment;
 import org.agorava.linkedin.model.PostComments;
 import org.agorava.linkedin.model.Product;
+import org.agorava.linkedin.model.Product.ProductRecommendation;
 import org.agorava.linkedin.model.Products;
 import org.agorava.linkedin.model.Recommendation;
 import org.agorava.linkedin.model.Relation;
@@ -71,17 +81,6 @@ import org.agorava.linkedin.model.UpdateContentShare;
 import org.agorava.linkedin.model.UpdateContentStatus;
 import org.agorava.linkedin.model.UpdateContentViral;
 import org.agorava.linkedin.model.UrlResource;
-import org.agorava.linkedin.model.Company.CompanyAddress;
-import org.agorava.linkedin.model.Company.CompanyContactInfo;
-import org.agorava.linkedin.model.Company.CompanyLocation;
-import org.agorava.linkedin.model.Group.GroupCount;
-import org.agorava.linkedin.model.Group.GroupPosts;
-import org.agorava.linkedin.model.Group.GroupRelation;
-import org.agorava.linkedin.model.Post.Attachment;
-import org.agorava.linkedin.model.Post.PostRelation;
-import org.agorava.linkedin.model.Product.ProductRecommendation;
-import org.codehaus.jackson.Version;
-import org.codehaus.jackson.map.module.SimpleModule;
 
 /**
  * Jackson module for registering mixin annotations against LinkedIn model classes.
@@ -92,7 +91,7 @@ import org.codehaus.jackson.map.module.SimpleModule;
 public class LinkedInModule extends SimpleModule {
 
     public LinkedInModule() {
-        super("LinkedInModule", new Version(1, 0, 0, null));
+        super("LinkedInModule");
     }
 
     @Override

@@ -13,14 +13,19 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>agorava-linkedin-parent</artifactId>
         <groupId>org.agorava</groupId>
-        <version>0.6.0</version>
+        <version>0.7.0</version>
     </parent>
     <artifactId>agorava-linkedin-cdi</artifactId>
+    <properties>
+        <commons-collection.version>3.2.1</commons-collection.version>
+        <commons-beanutils.version>1.8.3</commons-beanutils.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -33,8 +38,29 @@
         </dependency>
 
         <dependency>
-            <groupId>org.agorava</groupId>
-            <artifactId>agorava-core-impl-cdi</artifactId>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>${commons-collection.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons-beanutils.version}</version>
+            <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
         </dependency>
 
         <dependency>
@@ -49,77 +75,4 @@
         </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>weld</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-                <property>
-                    <name>arquillian</name>
-                    <value>weld-ee-embedded-1.1</value>
-                </property>
-            </activation>
-
-            <properties>
-                <arquillian>weld-ee-embedded-1.1</arquillian>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>org.jboss.spec</groupId>
-                    <artifactId>jboss-javaee-6.0</artifactId>
-                    <type>pom</type>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.jboss.arquillian.container</groupId>
-                    <artifactId>arquillian-weld-ee-embedded-1.1</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.weld</groupId>
-                    <artifactId>weld-core</artifactId>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-simple</artifactId>
-                    <scope>test</scope>
-                </dependency>
-            </dependencies>
-
-        </profile>
-
-    </profiles>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <skip>true</skip>
-                    <systemPropertyVariables>
-                        <arquillian.launch>${arquillian}</arquillian.launch>
-                        <arquillian>${arquillian}</arquillian>
-                    </systemPropertyVariables>
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <id>surefire-it</id>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                        <configuration>
-                            <skip>false</skip>
-                            <redirectTestOutputToFile>true</redirectTestOutputToFile>
-                            <trimStackTrace>false</trimStackTrace>
-                            <printSummary>true</printSummary>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>

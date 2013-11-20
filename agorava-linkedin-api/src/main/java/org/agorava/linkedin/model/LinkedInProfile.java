@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 package org.agorava.linkedin.model;
 
-import org.agorava.core.api.UserProfile;
+import org.agorava.spi.UserProfile;
 
 /**
  * Model class containing a user's LinkedIn profile information.
@@ -58,13 +58,6 @@ public class LinkedInProfile extends UserProfile {
         this.profilePictureUrl = profilePictureUrl;
     }
 
-    /**
-     * The user's LinkedIn profile ID
-     */
-    @Override
-    public String getId() {
-        return id;
-    }
 
     /**
      * The user's first name

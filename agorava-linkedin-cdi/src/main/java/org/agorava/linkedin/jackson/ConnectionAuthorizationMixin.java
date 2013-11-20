@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 
 package org.agorava.linkedin.jackson;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Antoine Sabot-Durand
  */
-abstract class ConnectionAuthorizationMixin {
+abstract class ConnectionAuthorizationMixin extends LinkedInObjectMixin {
 
     ConnectionAuthorizationMixin(@JsonProperty("name") String name, @JsonProperty("value") String value) {
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,7 +59,8 @@ public class NetworkUpdateParameters {
      * @param updateTypes   List of Update Types to retrieve
      */
     public NetworkUpdateParameters(String user, boolean self, int recordStart, int recordCount, Date recordsBefore,
-                                   Date recordsAfter, boolean updateAll, boolean showHidden, List<UpdateTypeInput> updateTypes) {
+                                   Date recordsAfter, boolean updateAll, boolean showHidden,
+                                   List<UpdateTypeInput> updateTypes) {
         this.user = user;
         this.self = self;
         this.recordStart = recordStart;

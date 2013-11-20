@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ public class ConnectionAuthorization implements Serializable {
     private static final long serialVersionUID = -4957171160371820101L;
 
     private final String name;
+
     private final String value;
 
     public ConnectionAuthorization(String name, String value) {

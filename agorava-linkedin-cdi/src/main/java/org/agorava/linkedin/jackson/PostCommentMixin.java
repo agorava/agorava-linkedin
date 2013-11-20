@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +16,23 @@
 
 package org.agorava.linkedin.jackson;
 
-import java.util.Date;
-
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.agorava.linkedin.model.LinkedInProfile;
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
+
+import java.util.Date;
 
 /**
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class PostCommentMixin {
+abstract class PostCommentMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     PostCommentMixin(@JsonProperty("creationTimestamp") Date creationTimestamp,
-                     @JsonProperty("creator") LinkedInProfile creator, @JsonProperty("id") String id, @JsonProperty("text") String text) {
+                     @JsonProperty("creator") LinkedInProfile creator, @JsonProperty("id") String id,
+                     @JsonProperty("text") String text) {
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,20 @@
 
 package org.agorava.linkedin.jackson;
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Antoine Sabot-Durand
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class ShareContentMixin {
+abstract class ShareContentMixin extends LinkedInObjectMixin {
 
     @JsonCreator
     ShareContentMixin(@JsonProperty("author") String description, @JsonProperty("eyebrowUrl") String eyebrowUrl,
-                      @JsonProperty("shortenedUrl") String shortenedUrl, @JsonProperty("submittedImageUrl") String submittedImageUrl,
+                      @JsonProperty("shortenedUrl") String shortenedUrl, @JsonProperty("submittedImageUrl") String
+            submittedImageUrl,
                       @JsonProperty("submittedUrl") String submittedUrl, @JsonProperty("thumbnailUrl") String thumbnailUrl,
                       @JsonProperty("title") String title) {
     }

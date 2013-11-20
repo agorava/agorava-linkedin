@@ -16,22 +16,30 @@
 
 package org.agorava;
 
-import org.agorava.core.api.oauth.DefaultOAuth10Api;
-//import org.jboss.solder.logging.Logger;
+import org.agorava.api.rest.Request;
+import org.agorava.api.rest.RequestTuner;
+import org.agorava.linkedin.LinkedIn;
 
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * @author antoine
+ * @author Antoine Sabot-Durand
  */
-
 @LinkedIn
-public class LinkedInApi extends DefaultOAuth10Api {
+public class LinkedInRequesTuner implements RequestTuner {
 
-    private final static String MEDIA_NAME = "LinkedIn";
+    private final static Map<String, String> REQUEST_HEADER = new HashMap<String, String>() {
+            {
+                put("Content-Type", "application/json");
+                put("x-li-format", "json");
+
+            }
+        };
 
     @Override
-    public String getServiceName() {
-        return MEDIA_NAME;
-    }
+    public void tune(Request request) {
+        request.getHeaders().putAll(REQUEST_HEADER);
 
+    }
 }

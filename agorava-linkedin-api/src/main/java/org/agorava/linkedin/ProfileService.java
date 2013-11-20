@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import org.agorava.linkedin.model.LinkedInProfile;
 import org.agorava.linkedin.model.LinkedInProfileFull;
 import org.agorava.linkedin.model.LinkedInProfiles;
 import org.agorava.linkedin.model.SearchParameters;
+import org.agorava.spi.UserProfileService;
 
 /**
  * Operations on Profile API
@@ -27,7 +28,7 @@ import org.agorava.linkedin.model.SearchParameters;
  * @author Robert Drysdale
  * @author Antoine Sabot-Durand
  */
-public interface ProfileService {
+public interface ProfileService extends UserProfileService {
 
     /**
      * Retrieves the user's LinkedIn profile ID.

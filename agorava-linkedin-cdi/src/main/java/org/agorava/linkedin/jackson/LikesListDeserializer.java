@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Agorava
+ * Copyright 2013 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,19 @@
 
 package org.agorava.linkedin.jackson;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.agorava.api.atinject.BeanResolver;
+import org.agorava.linkedin.model.LinkedInProfile;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.agorava.linkedin.model.LinkedInProfile;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.DeserializationContext;
-import org.codehaus.jackson.map.JsonDeserializer;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
 
 /**
  * @author Antoine Sabot-Durand
@@ -37,16 +38,15 @@ class LikesListDeserializer extends JsonDeserializer<List<LinkedInProfile>> {
     @Override
     public List<LinkedInProfile> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
             JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setDeserializationConfig(ctxt.getConfig());
+        ObjectMapper mapper = BeanResolver.getInstance().resolve(ObjectMapper.class);
         jp.setCodec(mapper);
         if (jp.hasCurrentToken()) {
-            JsonNode dataNode = jp.readValueAsTree().get("values");
+            JsonNode dataNode = jp.readValueAs(JsonNode.class).get("values");
             List<LinkedInProfile> likes = new ArrayList<LinkedInProfile>();
             // Have to iterate through list due to person sub object.
             for (JsonNode like : dataNode) {
-                LinkedInProfile profile = mapper.readValue(like.get("person"), new TypeReference<LinkedInProfile>() {
-                });
+                LinkedInProfile profile = mapper.reader(new TypeReference<LinkedInProfile>() {
+                }).readValue(like.get("person"));
                 likes.add(profile);
             }
             return likes;
