@@ -16,7 +16,8 @@
 
 package org.agorava.linkedin.model;
 
-import java.io.Serializable;
+import org.agorava.api.function.Codeable;
+import org.agorava.api.function.Nameable;
 
 /**
  * Contains LinkedIn structure which contains a code and a name for that code. The LinkedIn API returns a code/name pair for
@@ -25,12 +26,16 @@ import java.io.Serializable;
  *
  * @author Robert Drysdale
  * @author Antoine Sabot-Durand
+ * @author Werner Keil
  */
-public class CodeAndName implements Serializable {
+public class CodeAndName implements Codeable, Nameable {
 
-    private static final long serialVersionUID = 1L;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4364866367082914756L;
 
-    private final String code;
+	private final String code;
 
     private final String name;
 
