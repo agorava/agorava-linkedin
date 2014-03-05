@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Agorava
+ * Copyright 2013-2014 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import javax.inject.Named;
 
 /**
  * @author Antoine Sabot-Durand
+ * @author Werner Keil
  */
 
 @Named
@@ -39,7 +40,7 @@ import javax.inject.Named;
 public class ProfileServiceImpl extends LinkedInBaseService implements ProfileService {
 
     static {
-        StringBuffer b = new StringBuffer();
+        final StringBuilder b = new StringBuilder();
         b.append(BASE_URL).append("{0}:(");
         boolean first = true;
         for (ProfileField f : ProfileField.values()) {
