@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Agorava
+ * Copyright 2014 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,19 +29,19 @@ import org.agorava.linkedin.model.UrlResource;
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class LinkedInProfileMixin extends LinkedInObjectMixin {
 
-    @JsonCreator
-    LinkedInProfileMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,
-                         @JsonProperty("lastName") String lastName, @JsonProperty("headline") String headline,
-                         @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String publicProfileUrl,
-                         @JsonProperty("siteStandardProfileRequest") UrlResource siteStandardProfileRequest,
-                         @JsonProperty("pictureUrl") String profilePictureUrl) {
-    }
-
     @JsonProperty("summary")
     String summary;
-
     @JsonProperty("connectionAuthorization")
     @JsonDeserialize(using = ConnectionAuthorizationDeserializer.class)
     ConnectionAuthorization connectionAuthorization;
+
+    @JsonCreator
+    LinkedInProfileMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,
+            @JsonProperty("email-address") String email, @JsonProperty("lastName") String lastName,
+            @JsonProperty("headline") String headline, @JsonProperty("industry") String industry,
+            @JsonProperty("publicProfileUrl") String publicProfileUrl,
+            @JsonProperty("siteStandardProfileRequest") UrlResource siteStandardProfileRequest,
+            @JsonProperty("pictureUrl") String profilePictureUrl) {
+    }
 
 }

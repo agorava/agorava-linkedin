@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Agorava
+ * Copyright 2014 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,6 +55,7 @@ abstract class LinkedInProfileFullMixin extends LinkedInObjectMixin {
             @JsonProperty("id") String id,
             @JsonProperty("firstName") String firstName,
             @JsonProperty("lastName") String lastName,
+            @JsonProperty("email-address") String email,
             @JsonProperty("headline") String headline,
             @JsonProperty("industry") String industry,
             @JsonProperty("publicProfileUrl") String publicProfileUrl,

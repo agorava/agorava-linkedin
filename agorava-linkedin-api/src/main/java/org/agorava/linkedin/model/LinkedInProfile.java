@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Agorava
+ * Copyright 2014 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,16 +41,16 @@ public class LinkedInProfile extends UserProfile {
     private final String publicProfileUrl;
 
     private final String profilePictureUrl;
-
+    private final String email;
     private String summary;
-
     private ConnectionAuthorization connectionAuthorization;
 
-    public LinkedInProfile(String id, String firstName, String lastName, String headline, String industry,
-                           String publicProfileUrl, UrlResource siteStandardProfileRequest, String profilePictureUrl) {
+    public LinkedInProfile(String id, String firstName, String lastName, String email, String headline, String industry,
+            String publicProfileUrl, UrlResource siteStandardProfileRequest, String profilePictureUrl) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.headline = headline;
         this.industry = industry;
         this.publicProfileUrl = publicProfileUrl;
@@ -71,6 +71,10 @@ public class LinkedInProfile extends UserProfile {
      */
     public String getLastName() {
         return lastName;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Agorava
+ * Copyright 2014 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,24 +41,24 @@ import java.io.IOException;
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class UpdateContentCompanyMixin extends LinkedInObjectMixin {
 
-    @JsonCreator
-    UpdateContentCompanyMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,
-                              @JsonProperty("lastName") String lastName, @JsonProperty("headline") String headline,
-                              @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String
-            publicProfileUrl,
-                              @JsonProperty("siteStandardProfileRequest") UrlResource siteStandardProfileRequest,
-                              @JsonProperty("pictureUrl") String profilePictureUrl) {
-    }
-
     @JsonProperty("company")
     Company company;
-
     @JsonProperty("companyStatusUpdate")
     @JsonDeserialize(using = CompanyStatusUpdateDeserializer.class)
     Share companyStatusUpdate;
-
     @JsonProperty("companyJobUpdate")
     CompanyJobUpdate companyJobUpdate;
+
+    @JsonCreator
+    UpdateContentCompanyMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,
+            @JsonProperty("lastName") String lastName,
+            @JsonProperty("email-address") String email,
+            @JsonProperty("headline") String headline,
+            @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String
+            publicProfileUrl,
+            @JsonProperty("siteStandardProfileRequest") UrlResource siteStandardProfileRequest,
+            @JsonProperty("pictureUrl") String profilePictureUrl) {
+    }
 
     private static final class CompanyStatusUpdateDeserializer extends JsonDeserializer<Share> {
         @Override

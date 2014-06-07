@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Agorava
+ * Copyright 2014 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,18 +40,19 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class UpdateContentPersonActivityMixin extends LinkedInObjectMixin {
 
-    @JsonCreator
-    UpdateContentPersonActivityMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,
-                                     @JsonProperty("lastName") String lastName, @JsonProperty("headline") String headline,
-                                     @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String
-            publicProfileUrl,
-                                     @JsonProperty("siteStandardProfileRequest") UrlResource siteStandardProfileRequest,
-                                     @JsonProperty("pictureUrl") String profilePictureUrl) {
-    }
-
     @JsonProperty("personActivities")
     @JsonDeserialize(using = PersonActivitiesListDeserializer.class)
     List<PersonActivity> personActivities;
+
+    @JsonCreator
+    UpdateContentPersonActivityMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,
+            @JsonProperty("lastName") String lastName, @JsonProperty("email-address") String email,
+            @JsonProperty("headline") String headline,
+            @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String
+            publicProfileUrl,
+            @JsonProperty("siteStandardProfileRequest") UrlResource siteStandardProfileRequest,
+            @JsonProperty("pictureUrl") String profilePictureUrl) {
+    }
 
     private static class PersonActivitiesListDeserializer extends JsonDeserializer<List<PersonActivity>> {
         @SuppressWarnings("unchecked")

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Agorava
+ * Copyright 2014 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,9 +28,10 @@ public class UpdateContentStatus extends UpdateContent {
 
     private String currentStatus;
 
-    public UpdateContentStatus(String id, String firstName, String lastName, String headline, String industry,
-                               String publicProfileUrl, UrlResource siteStandardProfileRequest, String profilePictureUrl) {
-        super(id, firstName, lastName, headline, industry, publicProfileUrl, siteStandardProfileRequest, profilePictureUrl);
+    public UpdateContentStatus(String id, String firstName, String lastName, String email, String headline, String industry,
+            String publicProfileUrl, UrlResource siteStandardProfileRequest, String profilePictureUrl) {
+        super(id, firstName, lastName, email, headline, industry, publicProfileUrl, siteStandardProfileRequest,
+                profilePictureUrl);
     }
 
     public String getCurrentStatus() {

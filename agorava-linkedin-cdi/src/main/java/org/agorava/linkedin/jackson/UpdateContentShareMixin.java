@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Agorava
+ * Copyright 2014 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,16 +28,17 @@ import org.agorava.linkedin.model.UrlResource;
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class UpdateContentShareMixin extends LinkedInObjectMixin {
 
-    @JsonCreator
-    UpdateContentShareMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,
-                            @JsonProperty("lastName") String lastName, @JsonProperty("headline") String headline,
-                            @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String
-            publicProfileUrl,
-                            @JsonProperty("siteStandardProfileRequest") UrlResource siteStandardProfileRequest,
-                            @JsonProperty("pictureUrl") String profilePictureUrl) {
-    }
-
     @JsonProperty("currentShare")
     Share currentShare;
+
+    @JsonCreator
+    UpdateContentShareMixin(@JsonProperty("id") String id, @JsonProperty("firstName") String firstName,
+            @JsonProperty("lastName") String lastName, @JsonProperty("email-address") String email,
+            @JsonProperty("headline") String headline,
+            @JsonProperty("industry") String industry, @JsonProperty("publicProfileUrl") String
+            publicProfileUrl,
+            @JsonProperty("siteStandardProfileRequest") UrlResource siteStandardProfileRequest,
+            @JsonProperty("pictureUrl") String profilePictureUrl) {
+    }
 
 }
