@@ -16,6 +16,7 @@
 
 package org.agorava.linkedin.model;
 
+import org.agorava.linkedin.LinkedIn;
 import org.agorava.spi.UserProfile;
 
 /**
@@ -47,7 +48,7 @@ public class LinkedInProfile extends UserProfile {
 
     public LinkedInProfile(String id, String firstName, String lastName, String email, String headline, String industry,
             String publicProfileUrl, UrlResource siteStandardProfileRequest, String profilePictureUrl) {
-        super(id);
+        super(id, LinkedIn.class);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
