@@ -138,6 +138,11 @@ public class LinkedInProfile extends UserProfile {
     }
 
     @Override
+    public String getLoginName() {
+        return getEmail();
+    }
+
+    @Override
     public String getFullName() {
         return getFirstName() + " " + getLastName();
     }
