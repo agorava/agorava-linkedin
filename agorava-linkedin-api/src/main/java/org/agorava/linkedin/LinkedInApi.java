@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Agorava
+ * Copyright 2016 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,27 +16,30 @@
 
 package org.agorava.linkedin;
 
-import org.agorava.api.oauth.Token;
-import org.agorava.spi.ProviderConfigOauth10a;
+import org.agorava.api.oauth.application.OAuthAppSettings;
+import org.agorava.api.service.OAuthEncoder;
+import org.agorava.api.service.Preconditions;
+import org.agorava.spi.ProviderConfigOauth20;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-
 /**
  * @author antoine
+ * @author keilw
  */
 
 @LinkedIn
-public class LinkedInApi extends ProviderConfigOauth10a {
+public class LinkedInApi extends ProviderConfigOauth20 {
 
     private final static String MEDIA_NAME = "LinkedIn";
 
-    private static final String AUTHORIZE_URL = "https://api.linkedin.com/uas/oauth/authenticate?oauth_token=%s";
+    private static final String AUTHORIZE_URL = "https://www.linkedin.com/uas/oauth2/authorization";
+    	//"https://api.linkedin.com/uas/oauth/authenticate?oauth_token=%s";
 
-    private static final String REQUEST_TOKEN_URL = "https://api.linkedin.com/uas/oauth/requestToken";
+    //private static final String REQUEST_TOKEN_URL = "https://api.linkedin.com/uas/oauth/requestToken";
 
     private final Set<String> scopes;
 
@@ -55,14 +58,22 @@ public class LinkedInApi extends ProviderConfigOauth10a {
 
     @Override
     public String getAccessTokenEndpoint() {
-        return "https://api.linkedin.com/uas/oauth/accessToken";
+        return "https://api.linkedin.com/uas/oauth2/accessToken";
     }
 
     @Override
-    public String getRequestTokenEndpoint() {
-        return scopes.isEmpty() ? REQUEST_TOKEN_URL : REQUEST_TOKEN_URL + "?scope=" + scopesAsString();
+    public String getAuthorizationUrl(OAuthAppSettings config) {
+        Preconditions.checkValidUrl(config.getCallback(), "Must provide a valid url as callback. Github does not support OOB");
+
+        // Append scope if present
+  /*      if (config.hasScope()) {
+            return String.format(SCOPED_AUTHORIZE_URL, config.getApiKey(), OAuthEncoder.encode(config.getCallback()), OAuthEncoder.encode(config.getScope()));
+        } else { */
+            return String.format(AUTHORIZE_URL, config.getApiKey(), OAuthEncoder.encode(config.getCallback()));
+        //}
     }
 
+    /*
     private String scopesAsString() {
         StringBuilder builder = new StringBuilder();
         for (String scope : scopes) {
@@ -70,11 +81,7 @@ public class LinkedInApi extends ProviderConfigOauth10a {
         }
         return builder.substring(1);
     }
-
-    @Override
-    public String getAuthorizationUrl(Token requestToken) {
-        return String.format(AUTHORIZE_URL, requestToken.getToken());
-    }
+*/
 
     @Override
     public String getProviderName() {
