@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Agorava
+ * Copyright 2016 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,32 +16,25 @@
 
 package org.agorava.linkedin.model;
 
-import java.io.Serializable;
+import org.agorava.api.function.Identifiable;
 
 /**
  * Model class representing education details for a Profile on LinkedIn
  *
- * @author Robert Drysdale
+ * @author Werner Keil
  * @author Antoine Sabot-Durand
  */
-public class Education implements Serializable {
+public class Education implements Identifiable {
 
     private static final long serialVersionUID = 1L;
 
     private final String activities;
-
     private final String degree;
-
     private final String fieldOfStudy;
-
     private final String id;
-
     private final String notes;
-
     private final String schoolName;
-
     private final LinkedInDate startDate;
-
     private final LinkedInDate endDate;
 
     public Education(String activities, String degree, String fieldOfStudy, String id, String notes, String schoolName,
@@ -87,5 +80,4 @@ public class Education implements Serializable {
     public LinkedInDate getEndDate() {
         return endDate;
     }
-
 }

@@ -19,12 +19,13 @@ package org.agorava.linkedin;
 import org.agorava.api.oauth.application.OAuthAppSettings;
 import org.agorava.api.service.OAuthEncoder;
 import org.agorava.api.service.Preconditions;
-import org.agorava.spi.ProviderConfigOauth20;
+import org.agorava.spi.ProviderConfigOauth20Final;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Logger;
 
 /**
  * @author antoine
@@ -32,7 +33,7 @@ import java.util.Set;
  */
 
 @LinkedIn
-public class LinkedInApi extends ProviderConfigOauth20 {
+public class LinkedInApi extends ProviderConfigOauth20Final {
 
     private final static String MEDIA_NAME = "LinkedIn";
 
@@ -41,14 +42,12 @@ public class LinkedInApi extends ProviderConfigOauth20 {
 
     //private static final String REQUEST_TOKEN_URL = "https://api.linkedin.com/uas/oauth/requestToken";
 
-    private final Set<String> scopes;
-
     public LinkedInApi() {
-        scopes = Collections.emptySet();
+        Collections.emptySet();
     }
 
     public LinkedInApi(Set<String> scopes) {
-        this.scopes = Collections.unmodifiableSet(scopes);
+        Collections.unmodifiableSet(scopes);
     }
 
     public static LinkedInApi withScopes(String... scopes) {
@@ -69,7 +68,10 @@ public class LinkedInApi extends ProviderConfigOauth20 {
   /*      if (config.hasScope()) {
             return String.format(SCOPED_AUTHORIZE_URL, config.getApiKey(), OAuthEncoder.encode(config.getCallback()), OAuthEncoder.encode(config.getScope()));
         } else { */
-            return String.format(AUTHORIZE_URL, config.getApiKey(), OAuthEncoder.encode(config.getCallback()));
+        String url = String.format(AUTHORIZE_URL, config.getApiKey(), OAuthEncoder.encode(config.getCallback()));
+        System.out.println("URL: " + url);
+            return url;
+            
         //}
     }
 

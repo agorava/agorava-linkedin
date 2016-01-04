@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Agorava
+ * Copyright 2016 Agorava
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@
 
 package org.agorava.linkedin.model;
 
+import org.agorava.api.function.IntIdentifiable;
+import org.agorava.api.function.Nameable;
 import org.agorava.linkedin.model.Post.PostCategory;
 
 import java.io.Serializable;
@@ -25,40 +27,27 @@ import java.util.List;
  * Model class representing a group on LinkedIn
  *
  * @author Robert Drysdale
+ * @author Werner Keil
  * @author Antoine Sabot-Durand
  */
-public class Group implements Serializable {
+public class Group implements IntIdentifiable, Nameable {
 
     private static final long serialVersionUID = 1L;
 
     private Boolean allowMemberInvites;
-
     private GroupCategory category;
-
     private List<GroupCount> countsByCategory;
-
     private String description;
-
-    private final Integer id;
-
+    private final int id;
     private Boolean isOpenToNonMembers;
-
     private String largeLogoUrl;
-
     private String locale;
-
     private final String name;
-
     private GroupPosts posts;
-
     private GroupRelation relationToViewer;
-
     private String shortDescription;
-
     private String siteGroupUrl;
-
     private String smallLogoUrl;
-
     private String websiteUrl;
 
     public Group(Integer id, String name) {
@@ -82,7 +71,7 @@ public class Group implements Serializable {
         return description;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -129,9 +118,7 @@ public class Group implements Serializable {
     public static class GroupCount implements Serializable {
 
         private static final long serialVersionUID = 1L;
-
         private final PostCategory category;
-
         private final Integer count;
 
         public GroupCount(PostCategory category, Integer count) {
@@ -149,7 +136,6 @@ public class Group implements Serializable {
     }
 
     public static class GroupPosts extends SearchResult {
-
         private static final long serialVersionUID = 1L;
 
         public GroupPosts(int count, int start, int total) {
@@ -161,14 +147,12 @@ public class Group implements Serializable {
         public List<Post> getPosts() {
             return posts;
         }
-
     }
 
     public static class GroupRelation implements Serializable {
         private static final long serialVersionUID = 1L;
 
         private final List<GroupAvailableAction> availableActions;
-
         private final MembershipState membershipState;
 
         public GroupRelation(List<GroupAvailableAction> availableActions, MembershipState membershipState) {
@@ -190,7 +174,8 @@ public class Group implements Serializable {
     }
 
     public static enum MembershipState {
-        BLOCKED, NON_MEMBER, AWAITING_CONFIRMATION, AWAITING_PARENT_GROUP_CONFIRMATION, MEMBER, MODERATOR, MANAGER, OWNER
+        BLOCKED, NON_MEMBER, AWAITING_CONFIRMATION, AWAITING_PARENT_GROUP_CONFIRMATION, 
+        MEMBER, MODERATOR, MANAGER, OWNER
     }
 
     public static enum GroupAvailableAction {
