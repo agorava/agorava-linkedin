@@ -16,6 +16,7 @@
 
 package org.agorava.linkedin;
 
+import org.agorava.AgoravaConstants;
 import org.agorava.api.oauth.application.OAuthAppSettings;
 import org.agorava.api.service.OAuthEncoder;
 import org.agorava.api.service.Preconditions;
@@ -25,7 +26,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.logging.Logger;
 
 /**
  * @author antoine
@@ -37,7 +37,12 @@ public class LinkedInApi extends ProviderConfigOauth20Final {
 
     private final static String MEDIA_NAME = "LinkedIn";
 
-    private static final String AUTHORIZE_URL = "https://www.linkedin.com/uas/oauth2/authorization";
+    private static final String AUTHORIZE_URL = "https://www.linkedin.com/uas/oauth2/authorization?" 
+       + "response_type=code&"
+       + "state=DCEeFWf45A53sdfKef424&"
+       + AgoravaConstants.CLIENT_ID + "=%s&"
+       + AgoravaConstants.CLIENT_SECRET + "=%s&"
+       + AgoravaConstants.REDIRECT_URI + "=%s";
     	//"https://api.linkedin.com/uas/oauth/authenticate?oauth_token=%s";
 
     //private static final String REQUEST_TOKEN_URL = "https://api.linkedin.com/uas/oauth/requestToken";
@@ -62,14 +67,16 @@ public class LinkedInApi extends ProviderConfigOauth20Final {
 
     @Override
     public String getAuthorizationUrl(OAuthAppSettings config) {
-        Preconditions.checkValidUrl(config.getCallback(), "Must provide a valid url as callback. Github does not support OOB");
+        Preconditions.checkValidUrl(config.getCallback(), "Must provide a valid url as callback. LinkedIn does not support OOB");
 
         // Append scope if present
   /*      if (config.hasScope()) {
             return String.format(SCOPED_AUTHORIZE_URL, config.getApiKey(), OAuthEncoder.encode(config.getCallback()), OAuthEncoder.encode(config.getScope()));
         } else { */
-        String url = String.format(AUTHORIZE_URL, config.getApiKey(), OAuthEncoder.encode(config.getCallback()));
-        System.out.println("URL: " + url);
+        String url = String.format(AUTHORIZE_URL, config.getApiKey(), config.getApiSecret(), 
+        		//"http://localhost:8080/agorava-socializer/home.jsf"); 
+        		OAuthEncoder.encode(config.getCallback())); // TODO make this more flexible or get from request
+        //System.out.println("URL: " + url);
             return url;
             
         //}
