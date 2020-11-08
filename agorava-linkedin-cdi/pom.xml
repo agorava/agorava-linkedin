@@ -24,7 +24,7 @@
     <artifactId>agorava-linkedin-cdi</artifactId>
     <properties>
         <commons-collection.version>3.2.2</commons-collection.version>
-        <commons-beanutils.version>1.8.3</commons-beanutils.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
     </properties>
 
     <dependencies>
