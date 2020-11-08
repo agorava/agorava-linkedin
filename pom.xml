@@ -30,7 +30,7 @@
 
 	<modules>
 		<module>agorava-linkedin-api</module>
-		<!-- <module>agorava-linkedin-cdi</module -->
+		<module>agorava-linkedin-cdi</module>
 	</modules>
 
 	<dependencyManagement>
