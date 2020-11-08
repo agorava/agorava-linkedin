@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-  ~ Copyright 2016 Agorava
+  ~ Copyright 2016-2020 Agorava
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
 	<parent>
 		<artifactId>agorava-parent</artifactId>
 		<groupId>org.agorava</groupId>
-		<version>0.7.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
@@ -30,7 +30,7 @@
 
 	<modules>
 		<module>agorava-linkedin-api</module>
-		<module>agorava-linkedin-cdi</module>
+		<!-- <module>agorava-linkedin-cdi</module -->
 	</modules>
 
 	<dependencyManagement>
@@ -68,7 +68,7 @@
 		<repository>
 			<id>jcenter</id>
 			<name>JCenter</name>
-			<url>http://jcenter.bintray.com</url>
+			<url>https://jcenter.bintray.com</url>
 		</repository>
 		<repository>
 			<snapshots>
@@ -76,7 +76,7 @@
 			</snapshots>
 			<id>bintray-release</id>
 			<name>libs-release</name>
-			<url>http://oss.jfrog.org/artifactory/libs-release</url>
+			<url>https://oss.jfrog.org/artifactory/libs-release</url>
 		</repository>
 		<repository>
 			<snapshots>
@@ -84,7 +84,7 @@
 			</snapshots>
 			<id>bintray-snapshot</id>
 			<name>libs-snapshot</name>
-			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+			<url>https://oss.jfrog.org/artifactory/libs-snapshot</url>
 		</repository>
 	</repositories>
 </project>

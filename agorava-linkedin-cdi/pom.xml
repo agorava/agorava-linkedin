@@ -19,12 +19,12 @@
     <parent>
         <artifactId>agorava-linkedin-parent</artifactId>
         <groupId>org.agorava</groupId>
-        <version>0.7.1-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>agorava-linkedin-cdi</artifactId>
     <properties>
-        <commons-collection.version>3.2.2</commons-collection.version>
-        <commons-beanutils.version>1.8.3</commons-beanutils.version>
+        <commons-collection.version>4.4</commons-collection.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
     </properties>
 
     <dependencies>
@@ -38,8 +38,8 @@
         </dependency>
 
         <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
             <version>${commons-collection.version}</version>
             <scope>runtime</scope>
         </dependency>
